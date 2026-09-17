@@ -245,7 +245,7 @@ body.is-locked .wedding-dock{visibility:hidden;pointer-events:none}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.wedding-dock{background:#173f38}}
 @media(prefers-reduced-transparency:reduce){.wedding-dock,.dock-menu{background:#173f38}}
 /* Folded paper edges, brighter foil patterns and a gentle invitation glow. */
-.curtain__half--l{z-index:1;border-right:1px solid #ead69c66;box-shadow:5px 0 12px -4px #061b1866}
+.curtain__half--l{z-index:1;border-right:1px solid #ead69c66;box-shadow:2px 0 7px -4px #061b1833}
 .curtain__half--r{box-shadow:none}
 .curtain__half::after{content:"";position:absolute;top:0;bottom:0;width:28px;pointer-events:none}
 .curtain__half--l::after,.curtain__half--r::after{display:none}
@@ -392,3 +392,19 @@ body.rsvp-alert-open{overflow:hidden}
 }
 @media(min-width:1000px){.hero__grid{grid-template-columns:minmax(0,.9fr) 100px minmax(0,1.2fr)}.hero__name .given{font-size:clamp(22px,1.9vw,36px);white-space:nowrap}}
 @media(min-width:1000px) and (max-height:760px){.hero__grid{grid-template-columns:minmax(0,.9fr) 85px minmax(0,1.2fr)}}
+
+/* Gold wax seal and a single, uninterrupted wedding photograph. */
+.curtain__half--r .curtain__seal{background:transparent;border-radius:0;object-fit:contain;filter:drop-shadow(0 2px 3px #0003)}
+.hero__portraits--couple{width:min(100%,560px);display:block}
+.hero__portraits .hero__portrait--couple{width:100%;margin:0}
+.hero__portrait--couple::before{display:none}
+.hero__portrait--couple button{aspect-ratio:3/2;border-radius:12px;background:transparent}
+.hero__portrait--couple img{object-fit:contain;object-position:center}
+@media(min-width:1000px){
+  .hero__portraits--couple{width:100%;max-width:680px}
+  .hero__portraits .hero__portrait--couple{width:100%}
+  .hero__portrait--couple button{border-radius:14px}
+}
+@media(max-width:999px){
+  .hero__portraits--couple{width:min(100%,480px,48svh);margin:4px auto 6px}
+}

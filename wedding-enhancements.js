@@ -130,18 +130,12 @@
   ['pointerleave','pointercancel'].forEach(type => footer.addEventListener(type, () => footer.classList.remove('is-spotlit')));
   footer.addEventListener('pointerup', event => {if (event.pointerType !== 'mouse') footer.classList.remove('is-spotlit');});
   const heroTitle = document.querySelector('.hero__title');
-  const portrait = document.createElement('figure');
-  portrait.className = 'hero__portrait';
-  portrait.innerHTML = '<button type="button" aria-label="Xem lớn ảnh chân dung chú rể"><img src="anh-cuoi-1.png.jpg" alt="Chân dung chú rể Hải Nam" width="735" height="1280" fetchpriority="high"></button><figcaption>CHÂN DUNG CHÚ RỂ</figcaption>';
-  const bridePortrait = document.createElement('figure');
-  bridePortrait.className = 'hero__portrait hero__portrait--bride';
-  bridePortrait.innerHTML = '<button type="button" aria-label="Xem lớn ảnh Phương Thúy"><img src="phuong-thuy.png" alt="Phương Thúy cầm bó hoa hồng" width="1920" height="2560" fetchpriority="high"></button><figcaption>CÔ DÂU PHƯƠNG THÚY</figcaption>';
-  portrait.querySelector('figcaption').textContent = 'CHÚ RỂ HẢI NAM';
   const portraits = document.createElement('div');
-  portraits.className = 'hero__portraits';
-  const ampersand = document.createElement('span');
-  ampersand.className = 'hero__portraits-amp'; ampersand.textContent = '&'; ampersand.setAttribute('aria-hidden', 'true');
-  portraits.append(portrait, ampersand, bridePortrait);
+  portraits.className = 'hero__portraits hero__portraits--couple';
+  const portrait = document.createElement('figure');
+  portrait.className = 'hero__portrait hero__portrait--couple';
+  portrait.innerHTML = '<button type="button" aria-label="Xem lớn ảnh cưới"><img src="wedding-couple.jpg" alt="Ảnh cưới của cô dâu và chú rể" width="1536" height="1024" fetchpriority="high"></button>';
+  portraits.append(portrait);
   heroTitle.after(portraits);
   portraits.before(document.querySelector('.hero__logo'));
   const intro = document.querySelector('.intro');
@@ -232,8 +226,9 @@
     document.body.classList.add('photo-viewing'); dialog.showModal(); dialog.querySelector('.photo-close').focus();
   }
   function step(direction) {current = (current + direction + photos.length) % photos.length; renderPhoto();}
-  portrait.querySelector('button').addEventListener('click', () => showPhoto(0));
-  bridePortrait.querySelector('button').addEventListener('click', () => showPhoto(photos.findIndex(photo => photo.src === 'phuong-thuy.png')));
+  const couplePhotoIndex = photos.length;
+  photos.push({src:'wedding-couple.jpg', alt:'Ảnh cưới của cô dâu và chú rể', caption:'Hải Nam & Phương Thúy'});
+  portrait.querySelector('button').addEventListener('click', () => showPhoto(couplePhotoIndex));
   dialog.querySelector('.photo-close').addEventListener('click', () => dialog.close());
   dialog.querySelector('.photo-prev').addEventListener('click', () => step(-1));
   dialog.querySelector('.photo-next').addEventListener('click', () => step(1));

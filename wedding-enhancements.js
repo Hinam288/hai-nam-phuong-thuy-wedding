@@ -44,14 +44,6 @@
   document.getElementById('openBtn').addEventListener('click', () => {
     setTimeout(showInvitationAlert, 10000);
   }, {once:true});
-  const seal = document.querySelector('.curtain__seal');
-  const sealSpace = document.querySelector('.curtain__seal-space');
-  function positionSeal() {
-    seal.style.top = `${sealSpace.getBoundingClientRect().top}px`;
-  }
-  new ResizeObserver(positionSeal).observe(document.querySelector('.curtain__card'));
-  addEventListener('resize', positionSeal);
-  positionSeal();
   // A small, fixed pool of decorative flowers and butterflies follows the viewport.
   document.getElementById('openBtn').addEventListener('click', () => {
     const garden = document.createElement('div');

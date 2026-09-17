@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lễ thành hôn — Hải Nam &amp; Phương Thúy</title>
 <meta name="description" content="Thiệp mời cưới của Vũ Hải Nam và Lê Phương Thúy. Thứ Năm, 25 tháng 3 năm 2027, Trống Đồng Palace Linh Đàm, Hà Nội.">
-<meta name="theme-color" content="#122E2B">
+<meta name="theme-color" content="#990a09">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,14 +20,14 @@
   /* màu */
   --ivory:    #F7F4ED;   /* nền giấy */
   --ivory-2:  #EFEBE0;   /* giấy đậm hơn một bậc */
-  --ink:      #035048;   /* xanh cổ vịt đậm (nền tối, chữ chính) */
-  --peacock:  #1F5B54;   /* xanh trung gian */
+  --ink:      #990a09;   /* đỏ hỷ chủ đạo (nền tối, chữ chính) */
+  --peacock:  #5b1f1f;   /* đỏ trung gian */
   /**/
   --brass:    #A8873F;   /* đồng thau cũ */
   --brass-lt: #C9AC6B;   /* đồng sáng, dùng trên nền tối */
   --shell:    #E0D3CA;   /* hồng vỏ trứng nhạt — chỉ làm viền mảnh */
   --stone:    #6C7A75;   /* chữ phụ */
-  --line:     rgba(18,46,43,.16);
+  --line:     rgba(46,18,18,.16);
 
   /* chữ */
   --display: "Playfair Display", "Times New Roman", serif;
@@ -127,7 +127,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
   position:absolute; inset:0; background:var(--ink);
   background-image:
     radial-gradient(120% 90% at 50% 108%, rgba(201,172,107,.20), transparent 62%),
-    radial-gradient(80% 60% at 50% -10%, rgba(31,91,84,.9), transparent 70%);
+    radial-gradient(80% 60% at 50% -10%, rgba(91,31,31,.9), transparent 70%);
 }
 .curtain__half{
   position:absolute; top:0; bottom:0; width:50%;
@@ -192,7 +192,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
 
 /* nút áo đồng */
 .btn{
-  --bg:var(--brass); --fg:#122E2B; --bd:var(--brass);
+  --bg:var(--brass); --fg:#2e1212; --bd:var(--brass);
   display:inline-block; padding:.95rem 2.4rem; border:1px solid var(--bd); background:var(--bg); color:var(--fg);
   font-size:.875rem; font-weight:600; letter-spacing:.06em; text-transform:none;
   text-decoration:none; cursor:pointer; border-radius:0;
@@ -200,10 +200,10 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
 }
 .btn:hover{ --bg:var(--brass-lt); --bd:var(--brass-lt) }
 .btn:active{ transform:translateY(1px) }
-.btn--ghost{ --bg:transparent; --fg:var(--ink); --bd:rgba(18,46,43,.32) }
+.btn--ghost{ --bg:transparent; --fg:var(--ink); --bd:rgba(46,18,18,.32) }
 .btn--ghost:hover{ --bg:var(--ink); --fg:var(--ivory); --bd:var(--ink) }
 .btn--onDark{ --bg:transparent; --fg:var(--ivory); --bd:rgba(201,172,107,.6) }
-.btn--onDark:hover{ --bg:var(--brass); --fg:#122E2B; --bd:var(--brass) }
+.btn--onDark:hover{ --bg:var(--brass); --fg:#2e1212; --bd:var(--brass) }
 
 /* =========================================================
    2. HERO
@@ -275,7 +275,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
 .chapter__year{ font-family:var(--display); font-weight:600; font-size:1.5rem; color:var(--brass); line-height:1.2; padding-top:.15em }
 .chapter__year small{ display:block; font-family:var(--body); font-size:.75rem; color:var(--stone); letter-spacing:.02em; margin-top:.35rem }
 .chapter h3{ font-size:clamp(1.15rem,1.05rem + .5vw,1.5rem); margin-bottom:.7rem }
-.chapter p{ margin:0; max-width:38rem; color:#2C4945 }
+.chapter p{ margin:0; max-width:38rem; color:#492c2c }
 .chapter__art{ margin-top:1.25rem; width:clamp(64px,12vw,92px); opacity:.85 }
 .chapter__photo{
   margin-top:1.75rem; max-width:26rem; aspect-ratio:3/2; overflow:hidden;
@@ -310,7 +310,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
   padding:.7rem 0; border-bottom:1px dashed var(--line); font-size:.9375rem;
 }
 .run time{ font-family:var(--display); font-weight:600; font-size:1.0625rem; font-variant-numeric:tabular-nums; color:var(--peacock) }
-.run span{ color:#2C4945 }
+.run span{ color:#492c2c }
 
 /* =========================================================
    6. ĐỊA ĐIỂM
@@ -332,7 +332,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
 .venue__facts b{ font-weight:500; color:rgba(201,172,107,.9); font-size:.8125rem; letter-spacing:.02em; padding-top:.15em }
 .venue__actions{ display:flex; flex-wrap:wrap; gap:.75rem; margin-top:2rem }
 
-.map{ border:1px solid rgba(201,172,107,.35); background:#0E2622; aspect-ratio:1/1; max-height:26rem }
+.map{ border:1px solid rgba(201,172,107,.35); background:#260e0e; aspect-ratio:1/1; max-height:26rem }
 .map svg{ width:100%; height:100% }
 
 /* =========================================================
@@ -350,7 +350,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
   position:absolute; left:0; right:0; bottom:0; padding:.7rem .85rem;
   font-size:.75rem; letter-spacing:.02em; color:var(--ivory);
   background:linear(transparent, transparent);
-  background-color:rgba(18,46,43,.88);
+  background-color:rgba(46,18,18,.88);
   opacity:0; translate:0 .5rem; transition:opacity .4s ease, translate .4s ease;
 }
 .plate:hover figcaption,.plate:focus-within figcaption{ opacity:1; translate:0 }
@@ -364,7 +364,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
 .notes{ padding:var(--band) 0; background:var(--ivory-2); border-block:1px solid var(--line) }
 .notes__grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(17rem,1fr)); gap:clamp(2rem,5vw,3.5rem) }
 .note h3{ font-size:1.25rem; margin-bottom:.8rem }
-.note p{ font-size:.9375rem; color:#2C4945; margin:0 0 .9rem }
+.note p{ font-size:.9375rem; color:#492c2c; margin:0 0 .9rem }
 .swatches{ display:flex; gap:.5rem; margin-top:1.25rem }
 .swatches i{ width:2.5rem; height:2.5rem; border:1px solid var(--line); display:block }
 .gift{ border:1px solid rgba(168,135,63,.4); padding:clamp(1.25rem,3vw,1.75rem); background:var(--ivory) }
@@ -373,7 +373,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
 .gift__row b{ font-weight:500; color:var(--stone); font-size:.8125rem; letter-spacing:.02em; padding-top:.2em }
 .copy{
   margin-top:1.25rem; width:100%; padding:.8rem 1rem; background:transparent;
-  border:1px solid rgba(18,46,43,.28); cursor:pointer; font-size:.8125rem; letter-spacing:.03em;
+  border:1px solid rgba(46,18,18,.28); cursor:pointer; font-size:.8125rem; letter-spacing:.03em;
   transition:background .3s ease, color .3s ease;
 }
 .copy:hover{ background:var(--ink); color:var(--ivory); border-color:var(--ink) }
@@ -386,7 +386,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
   display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(2rem,6vw,4.5rem);
   border:1px solid var(--brass); padding:clamp(1.75rem,5vw,3.75rem);
 }
-.rsvp__aside p{ font-size:.9375rem; color:#2C4945 }
+.rsvp__aside p{ font-size:.9375rem; color:#492c2c }
 .rsvp__aside .deadline{ font-family:var(--display); font-weight:600; font-size:1.35rem; margin:1.5rem 0 0 }
 .rsvp__aside .deadline small{ display:block; font-family:var(--body); font-size:.8125rem; color:var(--stone); margin-top:.3rem }
 
@@ -397,7 +397,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
 .field label,.seg__opt span,.field .lbl{ font-size:.8125rem; letter-spacing:.02em; color:var(--stone) }
 .field input,.field select,.field textarea{
   font:inherit; font-size:.9375rem; color:var(--ink); background:transparent;
-  border:0; border-bottom:1px solid rgba(18,46,43,.3); padding:.55rem .1rem; border-radius:0;
+  border:0; border-bottom:1px solid rgba(46,18,18,.3); padding:.55rem .1rem; border-radius:0;
   transition:border-color .25s ease;
 }
 .field textarea{ resize:vertical; min-height:4.5rem; line-height:1.6 }
@@ -411,7 +411,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
 .seg__opt{ position:relative }
 .seg__opt input{ position:absolute; opacity:0; inset:0; cursor:pointer }
 .seg__opt span{
-  display:block; padding:.7rem 1.4rem; border:1px solid rgba(18,46,43,.25);
+  display:block; padding:.7rem 1.4rem; border:1px solid rgba(46,18,18,.25);
   transition:background .25s ease, color .25s ease, border-color .25s ease;
 }
 .seg__opt input:checked + span{ background:var(--ink); color:var(--ivory); border-color:var(--ink) }
@@ -423,7 +423,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
 .done{ border:1px solid var(--brass); padding:clamp(1.75rem,5vw,3rem); text-align:center }
 .done[hidden]{ display:none }
 .done h3{ font-size:clamp(1.5rem,1.2rem + 1.4vw,2.25rem); margin-bottom:.75rem }
-.done p{ margin:0 auto; max-width:28rem; font-size:.9375rem; color:#2C4945 }
+.done p{ margin:0 auto; max-width:28rem; font-size:.9375rem; color:#492c2c }
 .done .again{ margin-top:1.75rem; background:none; border:0; cursor:pointer; font-size:.8125rem; letter-spacing:.03em; color:var(--brass); text-decoration:underline; text-underline-offset:4px }
 
 /* =========================================================
@@ -511,17 +511,17 @@ button:disabled{opacity:.6;cursor:wait}
      ========================================================= -->
 <div class="curtain" id="curtain">
   <div class="curtain__bg"></div>
-  <div class="curtain__half curtain__half--l"></div>
-  <div class="curtain__half curtain__half--r">
-    <img class="curtain__seal" src="wedding-seal.webp" width="96" height="96" alt="" aria-hidden="true">
-  </div>
-
-  <div class="curtain__card">
-    <div class="curtain__seal-space" aria-hidden="true"></div>
-    <p class="curtain__for">Thiệp mời dành cho</p>
-    <p class="curtain__guest" id="guestName">Kim Đồng Ngọc Nữ</p>
-    <p class="curtain__names">Hải Nam &amp; Phương Thúy</p>
-    <button class="btn btn--onDark" id="openBtn" type="button">Mở thiệp</button>
+  <div class="curtain__paper">
+    <div class="curtain__half curtain__half--l"></div>
+    <div class="curtain__half curtain__half--r">
+      <div class="curtain__botanical" aria-hidden="true">
+        <img class="curtain__leaf" src="picture/ref/la%20sen.png" alt="">
+        <img class="curtain__lotus" src="picture/ref/bong%20sen.png" alt="">
+      </div>
+      <button class="curtain__seal" id="openBtn" type="button" aria-label="Mở thiệp cưới Hải Nam và Phương Thúy">
+        <img src="picture/LOGO.svg" width="180" height="180" alt="">
+      </button>
+    </div>
   </div>
 </div>
 
@@ -738,7 +738,7 @@ button:disabled{opacity:.6;cursor:wait}
 
         <!-- KHUNG 2 · NGANG · ảnh 1200×800 px trở lên, tỉ lệ 3:2 -->
         <figure class="plate plate--wide">
-          <svg viewBox="0 0 240 160" fill="none" stroke="#1F5B54" stroke-width="1.1" aria-hidden="true">
+          <svg viewBox="0 0 240 160" fill="none" stroke="#ae2926" stroke-width="1.1" aria-hidden="true">
             <path d="M20 140h200" stroke="#A8873F"/>
             <path d="M70 140c-14-30-6-64 10-84M90 140c-4-36 6-66 22-84M118 140c6-34 22-58 42-72M142 140c14-28 34-44 54-52"/>
             <path d="M80 56c-14 6-24 20-28 36M112 56c12-6 26-6 38 0M160 68c12 8 20 20 24 34"/>
@@ -757,7 +757,7 @@ button:disabled{opacity:.6;cursor:wait}
 
         <!-- KHUNG 4 · DỌC · ảnh 900×1200 px trở lên, tỉ lệ 3:4 -->
         <figure class="plate">
-          <svg viewBox="0 0 160 200" fill="none" stroke="#1F5B54" stroke-width="1.1" aria-hidden="true">
+          <svg viewBox="0 0 160 200" fill="none" stroke="#ae2926" stroke-width="1.1" aria-hidden="true">
             <circle cx="66" cy="106" r="30"/><circle cx="98" cy="106" r="30"/>
             <path d="M66 76l-8-26h48l-8 26" stroke="#A8873F"/>
             <path d="M40 156h84" stroke="#A8873F" opacity=".6"/>
@@ -767,7 +767,7 @@ button:disabled{opacity:.6;cursor:wait}
 
         <!-- KHUNG 5 · NGANG · ảnh 1200×800 px trở lên, tỉ lệ 3:2 -->
         <figure class="plate plate--wide">
-          <svg viewBox="0 0 240 160" fill="none" stroke="#1F5B54" stroke-width="1.1" aria-hidden="true">
+          <svg viewBox="0 0 240 160" fill="none" stroke="#ae2926" stroke-width="1.1" aria-hidden="true">
             <path d="M30 120c30-52 60-72 90-72s60 20 90 72" stroke="#A8873F" stroke-width="1.4"/>
             <path d="M56 120c22-36 44-52 64-52s42 16 64 52"/>
             <path d="M20 132h200"/><path d="M40 132v16M200 132v16"/>
@@ -778,7 +778,7 @@ button:disabled{opacity:.6;cursor:wait}
 
         <!-- KHUNG 6 · DỌC · ảnh 900×1200 px trở lên, tỉ lệ 3:4 -->
         <figure class="plate">
-          <svg viewBox="0 0 160 200" fill="none" stroke="#1F5B54" stroke-width="1.1" aria-hidden="true">
+          <svg viewBox="0 0 160 200" fill="none" stroke="#ae2926" stroke-width="1.1" aria-hidden="true">
             <path d="M80 22c16 22 34 34 34 56a34 34 0 0 1-68 0c0-22 18-34 34-56Z" stroke="#A8873F" stroke-width="1.4"/>
             <path d="M80 112v66M80 130l-16-14M80 130l16-14"/>
             <path d="M46 178h68"/>
@@ -788,7 +788,7 @@ button:disabled{opacity:.6;cursor:wait}
 
         <!-- KHUNG 7 · DỌC CAO · ảnh 900×1400 px trở lên, tỉ lệ 3:4 -->
         <figure class="plate plate--tall">
-          <svg viewBox="0 0 160 220" fill="none" stroke="#1F5B54" stroke-width="1.1" aria-hidden="true">
+          <svg viewBox="0 0 160 220" fill="none" stroke="#ae2926" stroke-width="1.1" aria-hidden="true">
             <path d="M30 200c0-50 20-90 50-90s50 40 50 90" stroke-width="1.4"/>
             <path d="M52 200c0-38 12-66 28-66s28 28 28 66"/>
             <circle cx="80" cy="82" r="9" stroke="#A8873F"/>
@@ -799,7 +799,7 @@ button:disabled{opacity:.6;cursor:wait}
 
         <!-- KHUNG 8 · DỌC · ảnh 900×1200 px trở lên, tỉ lệ 3:4 -->
         <figure class="plate">
-          <svg viewBox="0 0 160 200" fill="none" stroke="#1F5B54" stroke-width="1.1" aria-hidden="true">
+          <svg viewBox="0 0 160 200" fill="none" stroke="#ae2926" stroke-width="1.1" aria-hidden="true">
             <rect x="44" y="30" width="72" height="92" stroke-width="1.4"/>
             <rect x="58" y="16" width="44" height="30" stroke="#A8873F"/>
             <path d="M44 140h72M60 140v30M100 140v30"/>
@@ -809,7 +809,7 @@ button:disabled{opacity:.6;cursor:wait}
 
         <!-- KHUNG 9 · NGANG · ảnh 1200×800 px trở lên, tỉ lệ 3:2 -->
         <figure class="plate plate--wide">
-          <svg viewBox="0 0 240 160" fill="none" stroke="#1F5B54" stroke-width="1.1" aria-hidden="true">
+          <svg viewBox="0 0 240 160" fill="none" stroke="#ae2926" stroke-width="1.1" aria-hidden="true">
             <path d="M24 118c40-14 152-14 192 0" stroke-width="1.4"/>
             <path d="M60 118c-2-20 6-36 18-46M120 118c0-24 8-42 24-52M176 118c4-18 12-30 26-38" stroke="#A8873F"/>
             <circle cx="76" cy="60" r="6"/><circle cx="140" cy="52" r="7"/><circle cx="196" cy="66" r="5"/>
@@ -819,7 +819,7 @@ button:disabled{opacity:.6;cursor:wait}
 
         <!-- KHUNG 10 · DỌC · ảnh 900×1200 px trở lên, tỉ lệ 3:4 -->
         <figure class="plate">
-          <svg viewBox="0 0 160 200" fill="none" stroke="#1F5B54" stroke-width="1.1" aria-hidden="true">
+          <svg viewBox="0 0 160 200" fill="none" stroke="#ae2926" stroke-width="1.1" aria-hidden="true">
             <path d="M80 24l30 52H50Z" stroke-width="1.4"/>
             <path d="M80 76v70M56 176h48" stroke="#A8873F"/>
             <circle cx="80" cy="50" r="4" stroke="#A8873F"/>
@@ -829,7 +829,7 @@ button:disabled{opacity:.6;cursor:wait}
 
         <!-- KHUNG 11 · DỌC · ảnh 900×1200 px trở lên, tỉ lệ 3:4 -->
         <figure class="plate">
-          <svg viewBox="0 0 160 200" fill="none" stroke="#1F5B54" stroke-width="1.1" aria-hidden="true">
+          <svg viewBox="0 0 160 200" fill="none" stroke="#ae2926" stroke-width="1.1" aria-hidden="true">
             <ellipse cx="80" cy="100" rx="44" ry="60" stroke-width="1.4"/>
             <ellipse cx="80" cy="100" rx="26" ry="40" stroke="#A8873F"/>
             <circle cx="80" cy="100" r="7"/>
@@ -839,7 +839,7 @@ button:disabled{opacity:.6;cursor:wait}
 
         <!-- KHUNG 12 · NGANG · ảnh 1200×800 px trở lên, tỉ lệ 3:2 -->
         <figure class="plate plate--wide">
-          <svg viewBox="0 0 240 160" fill="none" stroke="#1F5B54" stroke-width="1.1" aria-hidden="true">
+          <svg viewBox="0 0 240 160" fill="none" stroke="#ae2926" stroke-width="1.1" aria-hidden="true">
             <rect x="30" y="34" width="180" height="92" stroke-width="1.4"/>
             <path d="M30 100h180" stroke="#A8873F"/>
             <path d="M70 34v66M120 34v66M170 34v66" opacity=".6"/>
@@ -996,14 +996,13 @@ const CONFIG = {
   };
   document.body.classList.add('is-locked');
   document.getElementById('openBtn').addEventListener('click', open);
-  curtain.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(); });
+
 
   // Tên khách đến từ đường dẫn: ?ten=Gia+đình+Anh+Bình
   const q = new URLSearchParams(location.search);
   const key = CONFIG.guestParam.find(k => q.get(k));
   const target = document.getElementById('guestName');
-  if (key) target.textContent = decodeURIComponent(q.get(key));
-  else target.textContent = CONFIG.defaultGuest;
+  if (target) target.textContent = key ? q.get(key) : CONFIG.defaultGuest;
 })();
 
 /* ---------- 2. Đếm ngược ---------- */
@@ -1295,7 +1294,7 @@ if(openButton)openButton.addEventListener('click',startMusic,{once:true});
   reduced.addEventListener('change',function(){cancelAnimationFrame(frame);moving=false;root.style.scrollSnapType='';root.style.scrollBehavior='';});
 })();
 </script>
-<link rel="stylesheet" href="wedding-enhancements.css?v=20260917-couple1">
-<script src="wedding-enhancements.js?v=20260917-couple1"></script>
+<link rel="stylesheet" href="wedding-enhancements.css?v=20260918-red1">
+<script src="wedding-enhancements.js?v=20260918-red1"></script>
 </body>
 </html>

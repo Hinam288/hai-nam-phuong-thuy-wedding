@@ -1,0 +1,24 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+.dev.vars*
+*.pem
+*.key
+.wrangler/
+node_modules/
+.codex/
+.agents/
+.DS_Store
+Thumbs.db
+*.log
+
+# Server integration is deployed separately, never served by Pages.
+telegram-worker.mjs
+google-sheets-rsvp.gs
+TELEGRAM-SETUP.md
+GOOGLE-SHEETS-SETUP.md
+rsvp-integration.test.mjs
+
+# Retired background track
+nhac-cuoi.mp3

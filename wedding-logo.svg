@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
+  <g stroke="#c9ac6b">
+    <path d="M80 6 145 43v74l-65 37-65-37V43Z" stroke-width="1"/>
+    <path d="M80 13 139 47v66l-59 34-59-34V47Z" opacity=".45"/>
+    <path d="M41 111c-18-19-18-43-3-64m-3 51-12-8m9-5-10-11m12-1-8-12m11 0-3-14m85 64c18-19 18-43 3-64m3 51 12-8m-9-5 10-11m-12-1 8-12m-11 0 3-14" stroke-linecap="round"/>
+    <path d="M80 39c-18-12-13-23-5-20l5 5 5-5c8-3 13 8-5 20Z"/>
+  </g>
+  <text x="57" y="94" fill="#ead5a2" font-family="Georgia,serif" font-size="47" text-anchor="middle">N</text>
+  <text x="102" y="94" fill="#ead5a2" font-family="Georgia,serif" font-size="47" text-anchor="middle">T</text>
+  <text x="80" y="83" fill="#c9ac6b" font-family="Georgia,serif" font-size="18" font-style="italic" text-anchor="middle">&amp;</text>
+  <text x="80" y="123" fill="#c9ac6b" font-family="Georgia,serif" font-size="9" letter-spacing="2" text-anchor="middle">25.03.2027</text>
+</svg>

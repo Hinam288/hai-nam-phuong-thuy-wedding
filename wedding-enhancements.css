@@ -1,0 +1,394 @@
+/* Compact RSVP card and repeatable section entrances. */
+#main > .rsvp{min-height:auto;padding:clamp(2.5rem,6vw,5rem) 0}
+.rsvp > .wrap{max-width:780px}
+.rsvp .sec-head{margin-bottom:1.4rem}
+.rsvp__box{grid-template-columns:minmax(0,1fr);gap:1.25rem;padding:clamp(1rem,3vw,2rem);background:#fffcf5;border-color:#a8873f70;border-radius:12px;box-shadow:0 12px 36px #122e2b08}
+.rsvp__aside{display:grid;grid-template-columns:1fr auto;column-gap:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.rsvp__aside .kicker{margin:0 0 .25rem;color:var(--brass);font-weight:600}
+.rsvp__aside p:not(.kicker):not(.deadline){margin:0;font-size:.85rem;max-width:26rem}
+.rsvp__aside .deadline{grid-column:2;grid-row:1 / 3;align-self:center;margin:0;font-size:1.1rem;text-align:right}
+.rsvp__aside .deadline small{font-size:.75rem}
+.rsvp .legend{padding-bottom:.65rem;font-weight:600;color:var(--ink)}
+.rsvp .field{gap:.25rem;margin-bottom:.8rem;min-width:0}
+.rsvp .grid2{gap:0 1rem;grid-template-columns:repeat(2,minmax(0,1fr))}
+.rsvp .field input,.rsvp .field select,.rsvp .field textarea{width:100%;min-width:0;min-height:44px;border:1px solid var(--line);border-radius:5px;background-color:#f7f4ed80;padding:.5rem .65rem}
+.rsvp .field select{padding-right:1.5rem;background-position:right .6rem center}
+.rsvp .field input:focus,.rsvp .field select:focus,.rsvp .field textarea:focus{outline:2px solid #a8873f60;outline-offset:1px;border-color:var(--brass)}
+.rsvp .field textarea{min-height:68px}
+.rsvp .seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+.rsvp .seg__opt span{text-align:center;padding:.55rem .4rem;border-radius:5px;min-height:44px}
+.rsvp .rsvp-status{padding:.35rem .7rem;margin:.5rem 0 0;font-size:.75rem;border-left-width:2px;font-weight:500}
+.rsvp .rsvp__foot{margin-top:.75rem;gap:.6rem 1rem}
+.rsvp .rsvp__foot .btn{padding:.75rem 1.5rem;border-radius:5px}
+.rsvp__aside[hidden]{display:none}
+@media(max-width:540px){.rsvp__aside{grid-template-columns:1fr;gap:.35rem}.rsvp__aside .deadline{grid-column:1;grid-row:auto;text-align:left;font-size:1rem;margin-top:.3rem}.rsvp__aside .deadline small{display:none}.rsvp .grid2{gap:0 .65rem}.rsvp .field input,.rsvp .field select,.rsvp .field textarea{font-size:16px}.rsvp .field label{font-size:.75rem;line-height:1.4}.rsvp .grid2 .field{grid-template-rows:auto 1fr;align-content:start}.rsvp .grid2 .field input,.rsvp .grid2 .field select{align-self:end}.rsvp__foot .btn{width:100%}}
+@media(max-width:360px){.rsvp .grid2{grid-template-columns:1fr}}
+.motion-ready{opacity:0;transform:translateY(24px);transition:opacity .75s ease var(--motion-delay,0ms),transform .85s cubic-bezier(.22,.61,.36,1) var(--motion-delay,0ms)}
+.motion-ready.motion-visible{opacity:1;transform:translateY(0)}
+.motion-ready:not(.motion-visible){opacity:0}
+.sec-head.motion-ready::before{transform:scaleX(.15);transform-origin:left;transition:transform .9s ease}
+.sec-head.motion-visible::before{transform:scaleX(1)}
+@media(prefers-reduced-motion:reduce){.motion-ready,.motion-ready:not(.motion-visible){opacity:1;transform:none;transition:none}.sec-head.motion-ready::before{transform:none;transition:none}}
+/* A gentle, photographic layer over the original invitation. */
+.hero .wrap{max-width:1050px}
+.hero__portrait{width:clamp(150px,22vw,230px);margin:0 auto 2rem;position:relative}
+.hero__portrait::before{content:"";position:absolute;inset:-9px;border:1px solid var(--brass-lt);border-radius:140px 140px 4px 4px;opacity:.65;pointer-events:none}
+.hero__portrait button{display:block;width:100%;padding:0;border:0;background:var(--ink);overflow:hidden;border-radius:130px 130px 0 0;aspect-ratio:4/5}
+.hero__portrait img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
+.hero__portrait figcaption{font-size:.7rem;letter-spacing:.12em;color:var(--brass-lt);padding-top:14px}
+.hero__title{margin-bottom:2rem}
+.hero__when{margin-top:2rem}.count{margin-top:1.75rem}
+.hero__scroll{display:inline-block;margin-top:1.75rem;font-size:.75rem;text-decoration:none;color:var(--brass-lt);letter-spacing:.1em}
+.hero__scroll span{display:block;font-size:1.3rem;animation:scroll-hint 2.4s ease-in-out infinite}
+.invitation-enter .hero__portrait{animation:hero-arrive 1.4s .25s both}
+.invitation-enter .hero__grid{animation:hero-arrive 1.2s .5s both}
+.invitation-enter .hero__when,.invitation-enter .hero__where,.invitation-enter .count{animation:hero-arrive 1.2s .8s both}
+.invitation-enter .hero__portrait img{animation:portrait-settle 7s ease-out both}
+.curtain.is-open .curtain__bg{opacity:0;transition:opacity .9s ease}
+.opening-sparks{position:fixed;inset:0;pointer-events:none;z-index:65;overflow:hidden}
+.opening-sparks i{position:absolute;left:var(--x);top:68%;width:4px;height:4px;border-radius:50%;background:#e6cb8a;box-shadow:0 0 9px #dfbd70;animation:spark-rise 2.4s var(--delay) ease-out both}
+.story__list{position:relative;padding-left:28px;--story-progress:0%}
+.story__list::before,.story__list::after{content:"";position:absolute;left:5px;top:12px;width:1px;bottom:0;background:var(--line)}
+.story__list::after{bottom:auto;height:var(--story-progress);max-height:calc(100% - 12px);background:var(--brass);transition:height .15s linear}
+.chapter{position:relative}
+.chapter::before{content:"";position:absolute;left:-28px;top:9px;width:11px;height:11px;border:1px solid var(--brass);background:var(--ivory-2);border-radius:50%;z-index:1;transition:background .6s,box-shadow .6s}
+.chapter.is-in::before{background:var(--brass);box-shadow:0 0 0 5px #a8873f18}
+.chapter__photo{border-radius:100px 100px 2px 2px;background:linear-gradient(135deg,#f7f4ed,#e5decc);max-width:30rem}
+.chapter__photo svg{transition:transform 1s}.chapter:hover .chapter__photo svg{transform:scale(1.07)}
+.chapter__photo figcaption{background:transparent;padding:1rem;font-style:italic}
+.plate{border-radius:3px}.plate img{transition:transform .8s ease}.plate:hover img{transform:scale(1.04)}
+.album-open{position:absolute;inset:0;z-index:2;border:0;background:transparent;color:white}
+.album-open span{position:absolute;right:12px;top:12px;border:1px solid #ffffff70;background:#122e2b99;border-radius:50%;width:36px;height:36px;display:grid;place-items:center;font-size:1.2rem}
+.plate figcaption{font-family:var(--display);font-style:italic;font-size:.85rem}
+.photo-viewer{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;padding:60px 64px;border:0;background:rgba(9,25,23,.97);color:var(--ivory);overflow:hidden}
+.photo-viewer::backdrop{background:#091917}
+.photo-viewer[open]{display:flex;align-items:center;justify-content:center;flex-direction:column}
+.photo-viewer img{max-height:calc(100dvh - 150px);max-width:100%;width:auto;object-fit:contain;min-height:0;border:1px solid #c9ac6b55}
+.photo-viewer p{margin:16px 0 0;text-align:center;font-family:var(--display)}
+.photo-viewer button{position:absolute;border:1px solid #c9ac6b70;background:#163b35;color:var(--ivory);width:44px;height:44px;border-radius:50%;font-size:24px}
+.photo-close{right:18px;top:18px}.photo-prev{left:12px;top:50%}.photo-next{right:12px;top:50%}
+.photo-viewer button[hidden]{display:none}
+body.photo-viewing{overflow:hidden}
+.music-launch{background:var(--brass)!important;color:var(--ivory)!important;border:4px solid #274b43!important;box-shadow:0 0 0 1px var(--brass),0 6px 24px #0004}
+.music-launch.is-playing svg{animation:record-turn 8s linear infinite}
+@keyframes hero-arrive{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes portrait-settle{from{transform:scale(1.08)}to{transform:scale(1)}}
+@keyframes spark-rise{0%{opacity:0;transform:translate(0,30px)}20%{opacity:.8}100%{opacity:0;transform:translate(var(--drift),-65vh)}}
+@keyframes scroll-hint{50%{transform:translateY(5px)}}
+@keyframes record-turn{to{transform:rotate(360deg)}}
+@media(max-width:640px){.hero{padding:2.5rem 0}.hero__portrait{width:145px;margin-bottom:1.6rem}.hero__grid{grid-template-columns:1fr 90px 1fr;gap:.5rem}.hero .arch{width:90px}.hero .arch__day{font-size:2.3rem}.hero .arch__mon{font-size:.65rem}.hero .arch__yr{font-size:.8rem}.hero__name .given{font-size:1.3rem}.hero__name .family{font-size:.9rem}.hero__name--left{text-align:right}.hero__name--right{text-align:left}.hero__when{font-size:.9rem;margin-top:1.25rem}.hero__where{font-size:.8rem}.hero__scroll{margin-top:1rem}.photo-viewer{padding:64px 14px}.photo-prev,.photo-next{top:auto;bottom:14px}.photo-viewer img{max-height:calc(100dvh - 170px)}}
+@media(prefers-reduced-motion:reduce){.opening-sparks{display:none}.invitation-enter .hero__portrait,.invitation-enter .hero__grid,.invitation-enter .hero__when,.invitation-enter .hero__where,.invitation-enter .count,.invitation-enter .hero__portrait img,.hero__scroll span,.music-launch.is-playing svg{animation:none}.story__list::after{transition:none}.plate:hover img,.chapter:hover .chapter__photo svg{transform:none}}
+/* Varied, repeatable motion across all nine parts of the invitation. */
+.motion-ready[data-motion="left"]{transform:translate(-24px,16px)}
+.motion-ready[data-motion="right"]{transform:translate(24px,16px)}
+.motion-ready[data-motion="zoom"]{transform:translateY(18px) scale(.95)}
+.motion-ready.motion-visible{transform:translate(0,0) scale(1)}
+.motion-ready:focus-within{opacity:1;transform:none}
+.section-active .hero__portrait::before{animation:frame-glow 4s ease-in-out infinite}
+.section-active .intro .rule{animation:rule-glow 4s ease-in-out infinite}
+.section-active .chapter.motion-visible::before{animation:timeline-glow 3s ease-in-out infinite}
+.section-active .swatches i{animation:swatch-bob 3.6s ease-in-out infinite}
+.swatches i:nth-child(2){animation-delay:.2s}.swatches i:nth-child(3){animation-delay:.4s}.swatches i:nth-child(4){animation-delay:.6s}
+.section-active .foot__names span{display:inline-block;animation:swatch-bob 4s ease-in-out infinite}
+.btn,.copy{transition:transform .25s ease,box-shadow .25s ease,background-color .25s ease}
+@media(hover:hover){.btn:hover,.copy:hover{transform:translateY(-3px);box-shadow:0 6px 18px #a8873f25}}
+.btn:active,.copy:active{transform:translateY(0) scale(.98)}
+.map.map--heart{position:relative;isolation:isolate;width:100%;max-width:500px;max-height:none;aspect-ratio:500/460;justify-self:center;border:0;background:transparent;overflow:visible}
+.map--heart .map__heart-frame{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;filter:drop-shadow(0 4px 8px #0003)}
+.map__heart-window{position:absolute;inset:0;z-index:1;background:#e8e5dc;clip-path:url(#wedding-map-heart);-webkit-clip-path:url(#wedding-map-heart);overflow:hidden}
+.map--heart iframe{position:absolute;inset:0;width:100%!important;height:100%!important;border-radius:0;box-shadow:none}
+.map__heart-caption{position:absolute;top:97%;left:5%;width:90%;text-align:center;font-family:var(--display);font-style:italic;color:var(--brass-lt);font-size:clamp(.7rem,1.3vw,.95rem);line-height:1.5;pointer-events:none}
+.map__heart-spark{position:absolute;color:var(--brass-lt);font-size:24px;pointer-events:none;opacity:.7}
+.map__heart-spark--one{left:8%;top:8%;rotate:-18deg}.map__heart-spark--two{right:6%;top:16%;font-size:15px;rotate:18deg}
+.section-active .map__heart-spark{animation:heart-float 4s ease-in-out infinite}
+.section-active .map__heart-spark--two{animation-delay:1s}
+@keyframes heart-float{50%{transform:translateY(-9px) scale(1.12);opacity:1}}
+@keyframes frame-glow{50%{opacity:1;box-shadow:0 0 22px #c9ac6b25}}
+@keyframes rule-glow{50%{opacity:.45;transform:scaleX(.88)}}
+@keyframes timeline-glow{50%{box-shadow:0 0 0 8px #a8873f12}}
+@keyframes swatch-bob{50%{transform:translateY(-4px)}}
+@media(max-width:640px){.map.map--heart{max-width:390px;order:-1}.map__heart-caption{font-size:.75rem}.motion-ready[data-motion="left"]{transform:translate(-12px,16px)}.motion-ready[data-motion="right"]{transform:translate(12px,16px)}.motion-ready.motion-visible{transform:none}}
+@media(prefers-reduced-motion:reduce){.motion-ready[data-motion],.motion-ready:not(.motion-visible){opacity:1;transform:none;transition:none}.section-active .hero__portrait::before,.section-active .intro .rule,.section-active .chapter.motion-visible::before,.section-active .swatches i,.section-active .foot__names span,.section-active .map__heart-spark{animation:none}.btn,.copy{transition:none}.btn:hover,.copy:hover,.btn:active,.copy:active{transform:none}}
+/* Monogram, fixed navigation and interactive gold wedding motifs. */
+:root{--nav-height:76px}
+html{scroll-padding-top:calc(var(--nav-height) + 12px)}
+.wedding-nav{position:fixed;inset:0 0 auto;z-index:58;background:#123a34f5;border-bottom:1px solid #c9ac6b45;backdrop-filter:blur(16px);color:var(--ivory);box-shadow:0 5px 24px #0002}
+body.is-locked .wedding-nav{visibility:hidden;pointer-events:none}
+.wedding-nav__inner{max-width:1320px;min-height:var(--nav-height);margin:auto;padding:8px clamp(16px,3vw,40px);display:flex;align-items:center;justify-content:space-between;gap:20px}
+.wedding-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--brass-lt);flex-shrink:0}
+.wedding-brand img{display:block;width:48px;height:48px}
+.wedding-brand span{font-family:var(--display);font-size:1.05rem;white-space:nowrap}.wedding-brand i{padding:0 3px}
+.wedding-nav__links{display:flex;align-items:center;gap:clamp(4px,1vw,16px)}
+.wedding-nav__links a{color:var(--ivory);text-decoration:none;font-size:.78rem;white-space:nowrap;padding:10px 6px;position:relative;border-radius:4px;transition:color .2s,background .2s}
+.wedding-nav__links a:hover,.wedding-nav__links a[aria-current="location"]{color:#efd397;background:#c9ac6b16}
+.wedding-nav__links a[aria-current="location"]::after{content:"";position:absolute;left:8px;right:8px;bottom:3px;height:1px;background:var(--brass-lt)}
+.wedding-nav__links .wedding-nav__rsvp{border:1px solid #c9ac6b90;padding-inline:13px;color:#efd397}
+.wedding-nav__toggle{display:none;color:var(--brass-lt);background:transparent;border:1px solid #c9ac6b70;border-radius:5px;min-height:44px;padding:8px 12px;align-items:center;gap:10px;font-size:.8rem}
+.wedding-nav a:focus-visible,.wedding-nav button:focus-visible{outline:2px solid #efd397;outline-offset:3px}
+#main > .hero{padding-top:calc(var(--nav-height) + 32px)}
+.hero__logo{display:block;width:124px;height:124px;margin:0 auto 20px;filter:drop-shadow(0 3px 12px #c9ac6b20)}
+.foot{position:relative;isolation:isolate;overflow:hidden;--spot-x:50%;--spot-y:50%}
+.foot > .wrap--narrow{position:relative;z-index:2;padding-inline:20px}
+.foot__patterns{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMjgwIiB2aWV3Qm94PSIwIDAgMzIwIDI4MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZGZiZDcwIiBzdHJva2Utd2lkdGg9IjEuMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8cGF0aCBkPSJNNDkgNjlDLTIgMzggMjkgMTMgNDkgMzRjMjAtMjEgNTEgNCAwIDM1WiIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE4MiAyMCkiPjxjaXJjbGUgY3g9IjE4IiBjeT0iMjgiIHI9IjE3Ii8+PGNpcmNsZSBjeD0iNDEiIGN5PSIyOCIgcj0iMTciLz48cGF0aCBkPSJtMTIgOCA2LTcgNiA3LTYgNlptMjMgMCA2LTcgNiA3LTYgNloiLz48L2c+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAwIDExMikiPjxwYXRoIGQ9Im0wIDAgMjUgOC04IDI0QzggNDgtMTEgNDAtNyAyNFptLTcgMzYtOCAyNG0tOS0zIDE5IDZtNDMtNTEgMjUtOCA3IDI0YzQgMTYtMTUgMjQtMjQgOFptNyAzNiA4IDI0bS05IDMgMTktNiIvPjxwYXRoIGQ9Im0tNCAxNyAyMiA3bTI2IDAgMjItNyIvPjwvZz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNTMgMTMxKSI+PHBhdGggZD0iTTAgNTFDMjcgMzQgMzMgMTQgMzIgME0xMyA0MEMtMyA0Mi05IDI5LTcgMjMgNyAyMiAxNSAyOSAxMyA0MFptMTItMTlDMTAgMjMgNyAxMiA5IDdjMTEtMSAxOCA2IDE2IDE0Wm0tMyA5YzE3IDUgMjUtNCAyNS0xMS0xMy00LTIzIDItMjUgMTFaIi8+PC9nPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM4IDIxNSkiPjxwYXRoIGQ9Im0wIDcgMTItNyAxMiA3LTEyIDIyWm0wIDBoMjRNNiA0bDYgMjUgNi0yNSIvPjxjaXJjbGUgY3g9IjEyIiBjeT0iNDEiIHI9IjE1Ii8+PC9nPgogIDxwYXRoIGQ9Ik0yMTUgMjU1Yy0zOC0yMy0xNS00MiAwLTI2IDE1LTE2IDM4IDMgMCAyNlpNMTIyIDQ4djEwbS01LTVoMTBNMjgxIDY3djEwbS01LTVoMTBNMTcgMTQ0djEwbS01LTVoMTBNMTY3IDIzM3YxMG0tNS01aDEwIi8+CiAgPGcgZmlsbD0iI2RmYmQ3MCIgc3Ryb2tlPSJub25lIj48Y2lyY2xlIGN4PSI4MyIgY3k9IjkyIiByPSIxLjUiLz48Y2lyY2xlIGN4PSIyNDYiIGN5PSI5OCIgcj0iMS41Ii8+PGNpcmNsZSBjeD0iODIiIGN5PSIxOTQiIHI9IjEuNSIvPjxjaXJjbGUgY3g9IjI4MCIgY3k9IjI1MiIgcj0iMS41Ii8+PC9nPgo8L3N2Zz4K');background-size:320px 280px;opacity:.12}
+.foot__patterns--light{z-index:1;opacity:0;filter:drop-shadow(0 0 5px #eac16b);mask-image:radial-gradient(circle 190px at var(--spot-x) var(--spot-y),#000 0%,#000 20%,transparent 100%);-webkit-mask-image:radial-gradient(circle 190px at var(--spot-x) var(--spot-y),#000 0%,#000 20%,transparent 100%);transition:opacity .35s ease}
+.foot.is-spotlit .foot__patterns--light{opacity:.95}
+.foot::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at center,#123a3470,transparent 75%)}
+@media(max-width:1080px){
+  :root{--nav-height:68px}
+  .wedding-nav__inner{flex-wrap:wrap;gap:0 12px}
+  .wedding-nav__toggle{display:flex}
+  .wedding-nav__links{display:none;flex-basis:100%;padding:12px 0 8px;gap:8px;grid-template-columns:repeat(2,minmax(0,1fr));max-height:calc(100dvh - 88px);overflow:auto;overscroll-behavior:contain}
+  .wedding-nav.is-expanded .wedding-nav__links{display:grid}
+  .wedding-nav__links a{padding:12px;font-size:.9rem;min-height:44px}
+  .wedding-nav__links .wedding-nav__rsvp{grid-column:1/-1;text-align:center}
+}
+@media(max-width:480px){.wedding-brand span{font-size:.85rem}.wedding-brand{gap:5px}.wedding-brand img{width:40px;height:40px}.wedding-nav__toggle{padding:8px;font-size:.75rem}.hero__logo{width:100px;height:100px}.foot__patterns{background-size:250px 219px}.foot__patterns--light{mask-image:radial-gradient(circle 140px at var(--spot-x) var(--spot-y),#000,transparent);-webkit-mask-image:radial-gradient(circle 140px at var(--spot-x) var(--spot-y),#000,transparent)}}
+@media(prefers-reduced-motion:reduce){.foot__patterns--light,.wedding-nav__links a{transition:none}}
+/* The two portraits share matching arches and keep their original photographs. */
+.hero__portraits{display:flex;align-items:center;justify-content:center;gap:clamp(24px,4vw,52px);margin:0 auto 2rem;position:relative}
+.hero__portraits .hero__portrait{margin:0;width:clamp(150px,22vw,230px);flex-shrink:0}
+.hero__portraits-amp{font:italic clamp(24px,4vw,42px) var(--display);color:var(--brass-lt);position:absolute;left:50%;top:42%;transform:translateX(-50%)}
+.hero__portrait--bride img{object-position:50% 45%}
+@media(max-width:640px){.hero__portraits{gap:30px;margin-bottom:1.6rem}.hero__portraits .hero__portrait{width:clamp(105px,35vw,145px)}.hero__portraits figcaption{font-size:.58rem;letter-spacing:.06em}.hero__portraits-amp{font-size:23px}}
+/* Floating glass navigation: full width at the top, rounded after scrolling. */
+html{scroll-padding-top:calc(var(--nav-height) + 28px + env(safe-area-inset-top,0px))}
+.wedding-nav{top:0;left:0;right:0;border:1px solid transparent;border-bottom-color:#c9ac6b45;border-radius:0;transition:top .45s cubic-bezier(.22,.61,.36,1),left .45s cubic-bezier(.22,.61,.36,1),right .45s cubic-bezier(.22,.61,.36,1),border-radius .45s ease,background-color .45s ease,box-shadow .45s ease,border-color .45s ease;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.wedding-nav::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,#fff2,transparent 28%,transparent 68%,#e8d4a51a);opacity:0;transition:opacity .45s ease}
+.wedding-nav__inner{position:relative;transition:padding .45s ease}
+.wedding-nav.is-floating{top:calc(12px + env(safe-area-inset-top,0px));left:max(24px,calc((100vw - 1320px)/2));right:max(24px,calc((100vw - 1320px)/2));border-radius:28px;background:rgba(18,58,52,.68);border-color:#f7f4ed38;box-shadow:0 12px 32px #081d2430,inset 0 1px 0 #fff4,inset 0 -1px 0 #c9ac6b22;-webkit-backdrop-filter:blur(24px) saturate(165%);backdrop-filter:blur(24px) saturate(165%)}
+.wedding-nav.is-floating::before{opacity:1}
+.wedding-nav.is-floating .wedding-nav__inner{padding-inline:22px}
+.wedding-nav.is-floating .wedding-nav__links a{border-radius:16px;text-shadow:0 1px 5px #061e1890}
+.wedding-nav.is-floating .wedding-brand{color:#e7d29f;text-shadow:0 1px 6px #061e1870}
+.wedding-nav.is-floating .wedding-nav__links a:hover,.wedding-nav.is-floating .wedding-nav__links a[aria-current="location"]{background:#ffffff16}
+.wedding-nav.is-floating .wedding-nav__links a[aria-current="location"]::after{left:15px;right:15px;bottom:4px}
+.wedding-nav.is-floating .wedding-nav__rsvp,.wedding-nav.is-floating .wedding-nav__toggle{background:#ffffff09;border-color:#dfc98b66}
+@media(max-width:1080px){.wedding-nav.is-floating{left:12px;right:12px;border-radius:24px}.wedding-nav.is-floating .wedding-nav__inner{padding-inline:14px}.wedding-nav.is-floating.is-expanded{background:rgba(18,58,52,.86)}.wedding-nav.is-floating .wedding-nav__toggle{border-radius:16px}.wedding-nav.is-floating .wedding-nav__links{max-height:calc(100dvh - 120px - env(safe-area-inset-top,0px))}}
+@media(max-width:480px){.wedding-nav.is-floating{left:8px;right:8px;top:calc(8px + env(safe-area-inset-top,0px));border-radius:22px}.wedding-nav.is-floating .wedding-nav__inner{padding-inline:10px;column-gap:8px}}
+@media(max-width:360px){.wedding-nav.is-floating .wedding-brand span{font-size:.75rem}.wedding-nav.is-floating .wedding-brand img{width:34px;height:34px}.wedding-nav.is-floating .wedding-nav__toggle{gap:5px;padding-inline:7px}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.wedding-nav.is-floating{background:#173f38f5}}
+@media(prefers-reduced-transparency:reduce){.wedding-nav.is-floating,.wedding-nav.is-floating.is-expanded{background:#173f38}}
+@media(prefers-reduced-motion:reduce){.wedding-nav,.wedding-nav::before,.wedding-nav__inner{transition:none}}
+/* Journey photographs: the real file covers the placeholder once supplied. */
+.chapter__photo--journey{isolation:isolate}
+.chapter__photo--journey img{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;object-fit:cover}
+.chapter__photo--journey img[hidden]{display:none}
+.chapter__photo-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;color:var(--brass);font:42px var(--display)}
+.chapter__photo-placeholder small{font:12px var(--body);letter-spacing:.08em}
+.chapter__photo--journey figcaption{z-index:2;color:var(--ink);background:#f7f4eded!important;padding:.6rem 1rem!important}
+/* An editorial invitation over a soft, replaceable wedding photograph. */
+#main > .intro--invitation{position:relative;isolation:isolate;overflow:hidden;padding:clamp(42px,6vw,80px) 0 30px;background:#d9d4c4;min-height:100svh}
+.intro__backdrop{position:absolute;inset:-24px;z-index:-2;background-image:linear-gradient(115deg,#133d365e,#e9dec64d 50%,#173e375c),url('image_loi_moi.png'),url('phuong-thuy.png');background-size:cover;background-position:center,center,center 43%;filter:blur(3px) saturate(.65);transform:scale(1.04);pointer-events:none}
+.intro--invitation::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#123a344d,transparent 30%,#f7f4ed18);pointer-events:none}
+.intro__invitation{position:relative;width:min(calc(100% - 72px),860px);margin-inline:auto;padding:40px clamp(24px,7vw,95px) 34px;background:linear-gradient(135deg,rgba(255,252,242,.40),rgba(246,240,226,.24));border:1px solid #fff9;border-radius:180px 180px 12px 12px;-webkit-backdrop-filter:blur(10px) saturate(125%) brightness(1.12);backdrop-filter:blur(10px) saturate(125%) brightness(1.12);box-shadow:0 22px 65px #153c3428,inset 0 2px 1px #ffffffb3,inset 1px 0 0 #ffffff40,inset 0 -1px 0 #c9ac6b55}
+.intro__invitation::before{content:"";position:absolute;inset:12px;border:1px solid #ffffff59;border-radius:168px 168px 5px 5px;pointer-events:none}
+.intro .intro__eyebrow{font:500 10px var(--body);letter-spacing:.24em;color:var(--brass);margin:0 auto 18px;padding-top:10px}
+.intro__seal{width:58px;height:58px;margin:0 auto 18px;border:1px solid #a8873f80;border-radius:50%;display:flex;align-items:center;justify-content:center;gap:1px;font:23px var(--display);color:var(--brass);box-shadow:0 0 0 5px #a8873f0b}
+.intro__seal i{font-size:13px}
+.intro__quote{position:relative;font:500 clamp(25px,3vw,38px)/1.36 var(--display);letter-spacing:-.025em;color:var(--ink);margin:0 auto;max-width:660px}
+.intro__quote em{font-weight:500;color:#9b772f}
+.intro__divider{display:flex;align-items:center;justify-content:center;gap:16px;margin:18px auto;max-width:180px;color:var(--brass);font-size:21px}
+.intro__divider::before,.intro__divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#a8873f90)}
+.intro__divider::after{transform:rotate(180deg)}
+.intro .intro__message{font:400 14px/1.85 var(--body);color:#526057;max-width:480px;margin:0 auto}
+.intro .intro__signature{font:italic 27px/1.4 var(--display);color:var(--ink);margin:22px auto 0}
+.intro__signature span{font-size:22px;color:var(--brass);padding:0 5px}
+.intro--invitation .sign{font-size:11px;line-height:1.65;margin:8px auto 0;color:#637065}
+.intro .intro__date{font:500 10px/1.6 var(--body);letter-spacing:.16em;margin:17px auto 0;color:#987633}
+.intro__date span{padding:0 8px}
+.intro__botanical{position:absolute;width:110px;height:280px;color:var(--brass);opacity:.19;pointer-events:none;bottom:36px;left:8px}
+.intro__botanical--right{left:auto;right:8px;transform:scaleX(-1)}
+.intro__journey{align-self:center;display:inline-flex;align-items:center;gap:14px;margin:24px auto 0;padding:10px 18px;border:1px solid #f7f4ed50;border-radius:30px;background:#143d366e;color:#fff7e7;text-decoration:none;font-size:11px;letter-spacing:.08em}
+.intro__journey:hover{background:#143d36b3}.intro__journey:focus-visible{outline:2px solid var(--brass);outline-offset:4px}
+.intro--invitation.section-active .intro__divider span{animation:intro-heart 3.5s ease-in-out infinite}
+@keyframes intro-heart{50%{transform:scale(1.16);opacity:.65}}
+@media(max-width:640px){#main > .intro--invitation{padding:36px 0 26px}.intro__invitation{width:calc(100% - 32px);border-radius:100px 100px 10px 10px;padding:34px 25px 30px}.intro__invitation::before{inset:8px;border-radius:94px 94px 5px 5px}.intro .intro__eyebrow{font-size:8px;letter-spacing:.19em;padding-top:8px;margin-bottom:14px}.intro__seal{width:48px;height:48px;font-size:20px;margin-bottom:18px}.intro__quote{font-size:clamp(22px,6vw,30px);line-height:1.4}.intro__desktop-break{display:none}.intro .intro__message{font-size:12px;line-height:1.8}.intro .intro__signature{font-size:24px;margin-top:20px}.intro .intro__date{font-size:9px}.intro__botanical{width:64px;bottom:65px;opacity:.13}.intro__journey{font-size:10px;margin-top:20px}}
+@media(prefers-reduced-motion:reduce){.intro--invitation.section-active .intro__divider span{animation:none}}
+
+/* Translucent frosted glass for the invitation arch. */
+.intro__invitation::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(125deg,#ffffff20,transparent 32%,transparent 72%,#fff8e510);box-shadow:inset 0 0 22px #ffffff0d}
+.intro__quote,.intro .intro__signature{text-shadow:0 1px 2px #fff7e650}
+.intro .intro__message{color:#283e33;text-shadow:0 1px 2px #fff7e645}
+.intro--invitation .sign{color:#3d5041}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.intro__invitation{background:linear-gradient(135deg,#fffcf2e8,#f6f0e2de)}}
+@media(prefers-reduced-transparency:reduce){.intro__invitation{background:#f6f0e3;-webkit-backdrop-filter:none;backdrop-filter:none}}
+/* Brand above, navigation and raised playback control below. */
+:root{--nav-height:64px}
+html{scroll-padding-top:16px;scroll-padding-bottom:120px}
+.wedding-nav{position:relative;inset:auto;box-shadow:none;transition:none}
+#main > .hero{padding-top:32px}
+.wedding-nav__inner{justify-content:center!important;flex-wrap:nowrap!important;min-height:var(--nav-height)}
+.wedding-nav .wedding-brand img{width:42px;height:42px}
+.wedding-dock{position:fixed;z-index:58;bottom:calc(12px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);width:min(560px,calc(100% - 24px));height:76px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:center;padding:5px 8px;border:1px solid #fff5;border-radius:26px;background:linear-gradient(130deg,#24564bcc,#123a34d9);-webkit-backdrop-filter:blur(24px) saturate(155%);backdrop-filter:blur(24px) saturate(155%);box-shadow:0 12px 35px #071d2340,inset 0 1px 0 #fff5;color:var(--ivory)}
+body.is-locked .wedding-dock{visibility:hidden;pointer-events:none}
+.dock-item{border:0;background:transparent;color:#f5ead4;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;font-family:var(--body);font-size:10px;text-decoration:none;min-height:56px;border-radius:17px;padding:5px 2px;cursor:pointer;transition:background .2s,color .2s}
+.dock-item svg{width:23px;height:23px;flex-shrink:0}
+.dock-item:hover,.dock-item[aria-current="location"],.dock-item[aria-expanded="true"]{background:#ffffff17;color:#efcf84}
+.dock-item:focus-visible,.dock-menu a:focus-visible,.dock-menu button:focus-visible{outline:2px solid #e7c982;outline-offset:2px}
+.dock-music-slot{position:relative;align-self:stretch;display:flex;justify-content:center;align-items:flex-start}
+.dock-music-label{position:absolute;top:49px;font-size:9px;color:#e8d5a5;white-space:nowrap;pointer-events:none}
+.wedding-dock .music-player{position:relative;left:auto;bottom:auto;z-index:auto;margin-top:-26px;font-family:var(--body)}
+.wedding-dock .music-launch{width:66px;height:66px;border-radius:50%;border:4px solid #245247!important;background:linear-gradient(135deg,#e0c080,#a48034)!important;color:#fff9e8!important;box-shadow:0 0 0 1px #e7cf95,0 7px 18px #071d2359,inset 0 2px 2px #fff6}
+.wedding-dock .music-launch svg{width:25px;height:25px;animation:none!important}
+.wedding-dock .music-launch:focus-visible{outline:2px solid #fff4d0;outline-offset:4px}
+.wedding-dock .music-launch.is-playing{box-shadow:0 0 0 1px #e7cf95,0 0 20px #e4c37445,0 7px 18px #071d2359}
+.dock-menu{position:absolute;left:0;right:0;bottom:calc(100% + 30px);padding:16px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;background:#173f38f2;-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border:1px solid #f4e0ad55;border-radius:22px;box-shadow:0 12px 40px #0004;max-height:calc(100dvh - 200px);overflow:auto;overscroll-behavior:contain}
+.dock-menu[hidden]{display:none}
+.dock-menu p{grid-column:1/-1;color:var(--brass-lt);font:italic 20px var(--display);margin:0 0 5px}
+.dock-menu a,.dock-menu button{font:12px var(--body);text-align:left;display:flex;align-items:center;text-decoration:none;color:var(--ivory);padding:12px;border:1px solid #fff2;border-radius:12px;background:#ffffff06;min-height:44px;cursor:pointer}
+.dock-menu a:hover,.dock-menu button:hover{background:#ffffff15}
+.wedding-dock .music-panel{bottom:84px;left:50%;transform:translateX(-50%);width:min(320px,calc(100vw - 40px));max-height:calc(100dvh - 200px);overflow:auto;background:#173f38f5;border-color:#c9ac6b66;color:var(--ivory)}
+.wedding-dock .music-player input[type=range]{accent-color:var(--brass-lt)}
+.wedding-dock #musicToggle{background:var(--brass);color:#fff9e8}
+#main > .foot{padding-bottom:140px}
+@media(max-width:480px){.wedding-dock{height:70px;border-radius:23px;padding-inline:4px;width:calc(100% - 16px);bottom:calc(8px + env(safe-area-inset-bottom,0px))}.dock-item{font-size:9px;gap:5px}.dock-item svg{width:22px;height:22px}.wedding-dock .music-launch{width:60px;height:60px}.wedding-dock .music-player{margin-top:-23px}.dock-music-label{top:45px;font-size:8px}.wedding-nav .wedding-brand span{font-size:1rem}.dock-menu{padding:12px}.dock-menu a,.dock-menu button{font-size:11px}}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.wedding-dock{background:#173f38}}
+@media(prefers-reduced-transparency:reduce){.wedding-dock,.dock-menu{background:#173f38}}
+/* Folded paper edges, brighter foil patterns and a gentle invitation glow. */
+.curtain__half--l{z-index:1;border-right:1px solid #ead69c66;box-shadow:5px 0 12px -4px #061b1866}
+.curtain__half--r{box-shadow:none}
+.curtain__half::after{content:"";position:absolute;top:0;bottom:0;width:28px;pointer-events:none}
+.curtain__half--l::after,.curtain__half--r::after{display:none}
+.curtain__half::before{opacity:.46;filter:brightness(1.3);-webkit-mask-image:linear-gradient(90deg,#000,rgba(0,0,0,.65));mask-image:linear-gradient(90deg,#000,rgba(0,0,0,.65))}
+.curtain__seal{filter:drop-shadow(0 2px 5px #0005);background:#16483fa6;border-radius:50%}
+#openBtn{box-shadow:0 8px 24px #0004,0 0 20px #d4b46a38,inset 0 1px 0 #f8e5b359}
+#openBtn::after{content:"";position:absolute;inset:-3px;border-radius:inherit;pointer-events:none;box-shadow:0 0 22px 4px #dfbd7040;animation:open-glow 3.2s ease-in-out infinite}
+#openBtn:hover::after{box-shadow:0 0 28px 5px #dfbd7060}
+.curtain.is-open #openBtn::after{animation:none;opacity:0}
+@keyframes open-glow{0%,100%{opacity:.4}50%{opacity:1}}
+@media(max-width:640px){.curtain__half::before{opacity:.43}}
+@media(prefers-reduced-motion:reduce){#openBtn::after{animation:none;opacity:.6}.dock-item{transition:none}}
+/* A clasp carried by the right invitation panel. */
+.curtain__half--r{z-index:2}
+.curtain__seal-space{width:96px;height:96px;margin:0 auto 2rem}
+.curtain__half--r .curtain__seal{position:absolute;left:0;transform:translateX(-50%);width:96px;height:96px;margin:0;background:#16483f;pointer-events:none}
+.hero__title{font-size:clamp(2.1rem,5vw,3.6rem);font-weight:600;color:#f4d47f;text-shadow:0 2px 12px #e4b84d30;line-height:1.2}
+.rsvp__aside{display:flex;flex-direction:column;align-items:center;gap:.5rem;text-align:center}
+.rsvp__aside .deadline{text-align:center;margin:.25rem 0 0}
+.rsvp__aside p:not(.kicker):not(.deadline){max-width:32rem}
+.foot__thanks em{font-style:italic}
+.foot__names{line-height:1.35}
+/* The clasp dissolves before its panel exits the viewport. */
+.curtain__half--r .curtain__seal{transition:opacity .85s ease-out}
+.curtain.is-open .curtain__seal{opacity:0}
+/* Gentle decoration above the page, below all navigation controls. */
+.wedding-garden{position:fixed;inset:0;z-index:45;overflow:hidden;pointer-events:none;user-select:none}
+.garden-particle{position:absolute;top:-50px;left:var(--x);width:var(--size);height:var(--size);opacity:0;animation:garden-fall var(--duration) var(--delay) linear infinite}
+.garden-particle svg{display:block;width:100%;height:100%;filter:drop-shadow(0 1px 1px #674f2314)}
+.garden-wings{transform-origin:20px 20px;animation:garden-flutter 2.4s ease-in-out infinite}
+@keyframes garden-fall{0%{opacity:0;transform:translate3d(0,0,0) rotate(0)}8%{opacity:.48}50%{transform:translate3d(var(--drift),52vh,0) rotate(calc(var(--turn) * .5))}88%{opacity:.4}100%{opacity:0;transform:translate3d(0,calc(100dvh + 100px),0) rotate(var(--turn))}}
+@keyframes garden-flutter{50%{transform:scaleX(.45)}}
+.wedding-garden.is-paused *{animation-play-state:paused}
+@media(max-width:640px){.garden-particle:nth-child(n+10){display:none}}
+@media(prefers-reduced-motion:reduce){.wedding-garden{display:none}.curtain__half--r .curtain__seal{transition:none}}
+.garden-particle--butterfly svg{filter:drop-shadow(0 0 3px #ffb5d080) drop-shadow(0 0 7px #f58bb540)}
+/* RSVP invitation, shown ten seconds after opening the card. */
+body.rsvp-alert-open{overflow:hidden}
+.invitation-alert{width:min(560px,calc(100vw - 28px));max-width:none;max-height:calc(100dvh - 32px);margin:auto;padding:30px clamp(18px,4vw,32px) 20px;border:1px solid #c9ac6b99;border-radius:28px;background:linear-gradient(145deg,#fffdf7,#f3ecdc);color:var(--ink);box-shadow:0 28px 90px #041c1966,inset 0 1px 0 #fff;overscroll-behavior:contain}
+.invitation-alert::backdrop{background:#082f2a99;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.invitation-alert[open]{animation:invitation-alert-in .4s ease both}
+.invitation-alert__close{position:absolute;right:12px;top:12px;width:40px;height:40px;border:1px solid #a8873f40;border-radius:50%;background:#fff8;color:var(--ink);font-size:25px;cursor:pointer}
+.invitation-alert__heading{text-align:center;margin-bottom:22px}
+.invitation-alert__heart{display:grid;place-items:center;width:52px;height:52px;margin:0 auto 12px;border:1px solid #b4914d70;border-radius:50%;color:#ad863a;font:34px var(--display);background:#e8d7ad33}
+.invitation-alert__heading > p:first-of-type{font-size:9px;letter-spacing:.18em;color:#93702f;margin:0 0 8px}
+.invitation-alert__heading h2{font:500 clamp(25px,5vw,32px)/1.25 var(--display);margin:0 0 10px}
+#invitation-alert-description{font-size:12px;line-height:1.7;color:#52655b;margin:0}
+.invitation-alert__content.rsvp{padding:0}
+.invitation-alert .fieldset{margin-bottom:16px}
+.invitation-alert .legend{font-size:14px}
+.invitation-alert .field label{font-size:12px}
+.invitation-alert .rsvp__foot .btn{background:#174d43;color:#fff4d7;border-color:#ac8d4a;width:100%}
+.invitation-alert .rsvp__hint{font-size:11px;text-align:center;width:100%}
+.invitation-alert__later{display:block;margin:16px auto 0;padding:10px;border:0;background:transparent;color:#637269;font:12px var(--body);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.invitation-alert button:focus-visible{outline:2px solid #ab8437;outline-offset:3px}
+@keyframes invitation-alert-in{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.invitation-alert[open]{animation:none}}
+/* Compact opening composition: all key wedding details above the bottom dock. */
+#main > .hero{padding:16px 0 108px;min-height:100svh;justify-content:center}
+.hero .wrap{display:flex;flex-direction:column;align-items:center;gap:9px;max-width:1000px}
+.hero__date-top{display:none}
+.hero__title{font-size:clamp(30px,5.2svh,52px);margin:0;line-height:1.12}
+.hero__logo{width:clamp(44px,7svh,68px);height:clamp(44px,7svh,68px);margin:0}
+.hero__portraits{margin:4px 0 0;gap:clamp(32px,5vw,58px)}
+.hero__portraits .hero__portrait{width:clamp(100px,18svh,176px)}
+.hero__portrait::before{inset:-5px}
+.hero__portrait figcaption{padding-top:7px;font-size:9px}
+.hero__grid{width:min(560px,100%);grid-template-columns:1fr 85px 1fr;gap:14px}
+.hero .arch{width:85px;padding-bottom:0;margin:0}
+.hero .arch__day{font-size:34px}.hero .arch__mon{font-size:10px}.hero .arch__yr{font-size:12px}
+.hero__name .given{font-size:clamp(23px,3vw,35px)}
+.hero__name .family{font-size:13px;margin-top:4px}.hero__name .role{font-size:9px;margin-bottom:4px}
+.hero__when{margin:0;font-size:12px}.hero__where{margin:0;font-size:11px;max-width:520px}
+.hero .count{margin:2px 0 0;gap:24px}.hero .count__n{font-size:29px}.hero .count__l{margin-top:4px;font-size:9px}
+.hero__scroll{margin:0;font-size:9px}.hero__scroll span{display:inline;margin-left:8px;font-size:14px}
+/* Alternating chapters, linked by a fine diagonal thread. */
+.story__list{padding:0;gap:38px;isolation:isolate}
+.story__list::before,.story__list::after,.chapter::before{display:none}
+.story-connector{position:absolute;inset:0;width:100%;height:100%;z-index:-1;overflow:visible;pointer-events:none}
+.story-connector polyline{fill:none;stroke:#b18c4859;stroke-width:1.5;stroke-dasharray:5 8;vector-effect:non-scaling-stroke}
+.story__list .chapter{display:block;width:48%;padding:18px;background:#efebe0eb;border:1px solid #b18c4829;border-radius:18px}
+.story__list .chapter:nth-of-type(odd){justify-self:start}
+.story__list .chapter:nth-of-type(even){justify-self:end}
+.chapter__year{display:block;width:fit-content;margin:0 0 15px;padding:9px 15px;background:var(--ivory);border:1px solid #b18c4860;border-radius:12px;font-size:26px}
+.chapter:nth-of-type(even) .chapter__year{margin-left:auto;text-align:right}
+.chapter__year small{display:block;font-size:10px;margin-top:4px}
+.chapter h3{font-size:20px}.chapter p{font-size:13px;line-height:1.7}
+.chapter__photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.chapter__photos .chapter__photo{width:100%;max-width:22.5rem;margin:0;aspect-ratio:3/2;border-radius:10px}
+.chapter__photos .chapter__photo-placeholder{font-size:23px}
+.chapter__photos .chapter__photo-placeholder small{font-size:9px;letter-spacing:0}
+.chapter__photos figcaption{font-size:9px;padding:4px!important}
+.venue__photos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0 5px}
+.venue__photos figure{margin:0;overflow:hidden;border:1px solid #c9ac6b55;border-radius:12px;background:#ffffff0a}
+.venue__photos img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;display:block}
+.venue__photos figcaption{font-size:11px;padding:9px;color:var(--brass-lt)}
+.venue__source{font-size:10px;color:var(--brass-lt)}
+.album__slideshow{text-align:center}.album__slideshow .btn{border-radius:10px}
+.gift{position:relative;border-radius:14px;min-height:245px;padding-right:150px}
+.gift__qr{position:absolute;right:16px;top:16px;width:112px;aspect-ratio:3/4;margin:0;border:1px dashed #a8873f88;border-radius:9px;overflow:hidden;background:#fff9ed;display:grid;place-items:center}
+.gift__qr > span{text-align:center;font-size:12px;color:#93702f}.gift__qr small{display:block;font-size:9px;margin-top:7px}
+.gift__qr img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff}.gift__qr img[hidden]{display:none}
+@media(max-width:700px){.story__list .chapter{width:88%;padding:14px}.chapter h3{font-size:18px}.chapter__photos{gap:8px}.gift{padding-right:130px}.gift__qr{width:96px;right:12px;top:12px}.gift__row{display:block}.gift__row b{display:block;margin-bottom:4px}.hero__grid{grid-template-columns:1fr 70px 1fr;gap:8px}.hero .arch{width:70px}.hero .arch__day{font-size:29px}.hero__name .given{font-size:24px}.hero .wrap{gap:8px}}
+@media(max-height:700px){.hero .wrap{gap:5px}.hero__portraits .hero__portrait{width:clamp(78px,15svh,110px)}.hero__logo{width:40px;height:40px}.hero__grid{grid-template-columns:1fr 65px 1fr}.hero .arch{width:65px}.hero .arch__day{font-size:27px}.hero .count__n{font-size:24px}}
+.wedding-dock .music-volume{width:115px;gap:8px}
+.wedding-dock .music-volume input{width:90px;min-height:36px;touch-action:pan-y}
+.wedding-dock .music-progress input{min-height:36px;touch-action:pan-y}
+.wedding-dock .music-panel{animation:music-panel-appear .2s ease}
+@keyframes music-panel-appear{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.wedding-dock .music-panel{animation:none}}
+/* Desktop cover: a wide invitation spread, with portraits and ceremony details. */
+@media(min-width:1000px){
+  #main > .hero{padding:28px 0 116px}
+  .hero::before{opacity:.08}
+  .hero .wrap{width:calc(100% - 96px);max-width:1480px;min-height:min(680px,calc(100svh - 160px));display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);grid-template-rows:auto auto auto auto auto auto;column-gap:clamp(28px,4vw,76px);row-gap:12px;align-content:center;align-items:center;padding:clamp(24px,3vw,48px);border:1px solid #d9bd7759;border-radius:24px;background:linear-gradient(125deg,#ffffff07,#073b3459);box-shadow:0 24px 70px #002c2533,inset 0 0 0 8px #c9ac6b06}
+  .hero .wrap::before{content:"";position:absolute;left:48.2%;top:12%;bottom:12%;width:1px;background:linear-gradient(transparent,#d9bd7766 25%,#d9bd7766 75%,transparent);pointer-events:none}
+  .hero__logo{grid-column:1;grid-row:1;width:76px;height:76px;justify-self:center;margin:0 0 8px}
+  .hero__portraits{grid-column:1;grid-row:2/7;align-self:center;gap:clamp(28px,3vw,54px);margin:0;justify-self:center}
+  .hero__portraits .hero__portrait{width:min(17vw,29svh,280px)}
+  .hero__portrait::before{inset:-8px;border-radius:180px 180px 6px 6px}
+  .hero__portrait button{border-radius:180px 180px 2px 2px}
+  .hero__portraits figcaption{font-size:10px;letter-spacing:.11em;padding:14px 0 5px}
+  .hero__portraits-amp{font-size:42px}
+  .hero__title{grid-column:2;grid-row:1;font-size:clamp(42px,4.2vw,72px);margin:0 0 10px}
+  .hero__grid{grid-column:2;grid-row:2;width:100%;grid-template-columns:minmax(0,1fr) 100px minmax(0,1fr);gap:12px}
+  .hero .arch{width:100px}.hero .arch__day{font-size:41px}.hero .arch__mon{font-size:11px}.hero .arch__yr{font-size:14px}
+  .hero__name .given{font-size:clamp(27px,2.6vw,46px);line-height:1.12}
+  .hero__name .role{font-size:11px;margin-bottom:9px;letter-spacing:.1em}.hero__name .family{font-size:16px;margin-top:8px}
+  .hero__when{grid-column:2;grid-row:3;font-size:15px;line-height:1.6;margin:8px 0 0}
+  .hero__where{grid-column:2;grid-row:4;justify-self:center;font-size:13px;line-height:1.7;max-width:430px;margin:0;color:#e3e8d6a6}
+  .hero .count{grid-column:2;grid-row:5;justify-self:center;gap:clamp(22px,3vw,46px);margin:8px 0 0;padding:18px 26px;border-block:1px solid #c9ac6b40}
+  .hero .count__n{font-size:clamp(32px,3vw,46px)}.hero .count__l{font-size:10px;letter-spacing:.1em;margin-top:8px}
+  .hero__scroll{grid-column:2;grid-row:6;justify-self:center;font-size:10px;letter-spacing:.13em;margin-top:6px;padding:7px}
+}
+@media(min-width:1000px) and (max-height:760px){
+  #main > .hero{padding-top:18px;padding-bottom:106px}
+  .hero .wrap{min-height:0;padding:24px;row-gap:7px;width:calc(100% - 64px)}
+  .hero__logo{width:60px;height:60px;margin-bottom:0}
+  .hero__title{font-size:44px;margin-bottom:2px}
+  .hero__portraits .hero__portrait{width:min(17vw,30svh,220px)}
+  .hero .arch{width:85px}.hero__grid{grid-template-columns:minmax(0,1fr) 85px minmax(0,1fr)}
+  .hero .count{padding:12px 24px;margin-top:3px}.hero .count__n{font-size:34px}
+  .hero__when{margin-top:0;font-size:13px}.hero__where{font-size:12px}
+}
+@media(min-width:1000px){.hero__grid{grid-template-columns:minmax(0,.9fr) 100px minmax(0,1.2fr)}.hero__name .given{font-size:clamp(22px,1.9vw,36px);white-space:nowrap}}
+@media(min-width:1000px) and (max-height:760px){.hero__grid{grid-template-columns:minmax(0,.9fr) 85px minmax(0,1.2fr)}}

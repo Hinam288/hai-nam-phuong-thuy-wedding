@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#123a34">
+  <title>Những ngày chung đôi — Hải Nam &amp; Phương Thúy</title>
+  <link rel="stylesheet" href="slideshow.css?v=20260916-music">
+  <script src="slideshow-photos.js" defer></script>
+  <script src="slideshow.js?v=20260916-music" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="back" href="index.html#album"><span aria-hidden="true">←</span> Về thiệp cưới</a>
+    <a class="brand" href="index.html">Hải Nam <i>&amp;</i> Phương Thúy</a>
+    <button class="fullscreen" id="fullscreen" type="button">Toàn màn hình <span aria-hidden="true">⛶</span></button>
+  </header>
+  <main class="gallery">
+    <div class="heading"><p class="eyebrow">OUR WEDDING MEMORIES · 25.03.2027</p><h1>Những ngày <em>chung đôi</em></h1><p>Một khung hình, một điều muốn giữ mãi.</p></div>
+    <section class="slideshow" aria-label="Slideshow ảnh cưới" aria-roledescription="băng chuyền ảnh">
+      <div class="stage">
+        <span class="stage__note" aria-hidden="true">with love, always</span>
+        <div class="viewport" id="viewport"><div class="track" id="track"></div></div>
+        <button class="arrow arrow--prev" id="prev" type="button" aria-label="Ảnh trước">←</button>
+        <button class="arrow arrow--next" id="next" type="button" aria-label="Ảnh tiếp theo">→</button>
+      </div>
+      <div class="playback">
+        <span class="counter"><b id="current">01</b><span> / </span><span id="total">10</span></span>
+        <div class="playback__center"><button id="play" type="button" aria-label="Tạm dừng slideshow">Ⅱ <span>Tạm dừng</span></button><span class="interval">3 giây / ảnh</span><div class="progress" aria-hidden="true"><i id="progress"></i></div></div>
+        <span class="next-label" id="next-label">Tiếp theo · 02</span>
+      </div>
+      <div class="slideshow-music"><button id="slideshowMusic" type="button" aria-label="Phát nhạc slideshow">♫ Phát nhạc</button><span id="slideshowTrack" role="status">Music Open · 1 / 2</span></div>
+      <audio id="slideshowAudio" src="music-open.mp3" preload="metadata"></audio>
+      <div class="filmstrip" id="filmstrip" aria-label="Ảnh xem trước — chọn để chuyển ảnh"></div>
+      <p class="sr-only" id="announcement" role="status" aria-live="polite"></p>
+    </section>
+    <div class="photo-picker"><label class="choose" for="photos">＋ Chọn ảnh cưới của bạn</label><input class="sr-only" id="photos" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple><p id="photo-help">10 khung ảnh ngang kiểu note. Bạn có thể chọn tối đa 10 ảnh từ máy để trình chiếu ngay; ảnh chỉ dùng trong phiên này.</p></div>
+    <p class="picker-status" id="picker-status" role="status"></p>
+  </main>
+  <footer class="gallery-footer"><span>HẢI NAM &amp; PHƯƠNG THÚY</span><span aria-hidden="true">♡</span><span>TOGETHER, FRAME BY FRAME</span></footer>
+  <noscript><p class="noscript">Vui lòng bật JavaScript để xem slideshow.</p></noscript>
+</body>
+</html>

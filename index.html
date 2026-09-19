@@ -2,6 +2,14 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+<script>
+// Start each page load at the invitation, keeping guest query parameters.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (location.hash) history.replaceState(history.state, '', location.pathname + location.search);
+window.addEventListener('pageshow', () => {
+  window.scrollTo({top:0, left:0, behavior:'instant'});
+});
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lễ thành hôn — Hải Nam &amp; Phương Thúy</title>
 <meta name="description" content="Thiệp mời cưới của Vũ Hải Nam và Lê Phương Thúy. Thứ Năm, 25 tháng 3 năm 2027, Trống Đồng Palace Linh Đàm, Hà Nội.">
@@ -214,7 +222,7 @@ h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0; letter-spacing:
   text-align:center;
 }
 .hero::before{ /* hoạ tiết gạch kỷ hà Đông Dương */
-  content:""; position:absolute; inset:0; opacity:.14; pointer-events:none;
+  content:""; position:absolute; inset:0; opacity:.21; pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23C9AC6B' stroke-width='.7'%3E%3Cpath d='M36 0 72 36 36 72 0 36Z'/%3E%3Cpath d='M36 14 58 36 36 58 14 36Z'/%3E%3Ccircle cx='36' cy='36' r='4'/%3E%3C/g%3E%3C/svg%3E");
 }
 .hero::after{ /* vệt sáng phía dưới */
@@ -518,6 +526,10 @@ button:disabled{opacity:.6;cursor:wait}
         <img class="curtain__leaf" src="picture/ref/la%20sen.png" alt="">
         <img class="curtain__lotus" src="picture/ref/bong%20sen.png" alt="">
       </div>
+      <div class="curtain__botanical curtain__botanical--lower" aria-hidden="true">
+        <img class="curtain__leaf" src="picture/ref/la%20sen.png" alt="">
+        <img class="curtain__lotus" src="picture/ref/bong%20sen.png" alt="">
+      </div>
       <button class="curtain__seal" id="openBtn" type="button" aria-label="Mở thiệp cưới Hải Nam và Phương Thúy">
         <img src="picture/LOGO.svg" width="180" height="180" alt="">
       </button>
@@ -530,7 +542,7 @@ button:disabled{opacity:.6;cursor:wait}
   <!-- ================= HERO ================= -->
   <header class="hero" id="trang-dau">
     <div class="wrap">
-      <img class="hero__logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMTYwIiBmaWxsPSJub25lIj4KICA8ZyBzdHJva2U9IiNjOWFjNmIiPgogICAgPHBhdGggZD0iTTgwIDYgMTQ1IDQzdjc0bC02NSAzNy02NS0zN1Y0M1oiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgPHBhdGggZD0iTTgwIDEzIDEzOSA0N3Y2NmwtNTkgMzQtNTktMzRWNDdaIiBvcGFjaXR5PSIuNDUiLz4KICAgIDxwYXRoIGQ9Ik00MSAxMTFjLTE4LTE5LTE4LTQzLTMtNjRtLTMgNTEtMTItOG05LTUtMTAtMTFtMTItMS04LTEybTExIDAtMy0xNG04NSA2NGMxOC0xOSAxOC00MyAzLTY0bTMgNTEgMTItOG0tOS01IDEwLTExbS0xMi0xIDgtMTJtLTExIDAgMy0xNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8cGF0aCBkPSJNODAgMzljLTE4LTEyLTEzLTIzLTUtMjBsNSA1IDUtNWM4LTMgMTMgOC01IDIwWiIvPgogIDwvZz4KICA8dGV4dCB4PSI1NyIgeT0iOTQiIGZpbGw9IiNlYWQ1YTIiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjQ3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5OPC90ZXh0PgogIDx0ZXh0IHg9IjEwMiIgeT0iOTQiIGZpbGw9IiNlYWQ1YTIiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjQ3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5UPC90ZXh0PgogIDx0ZXh0IHg9IjgwIiB5PSI4MyIgZmlsbD0iI2M5YWM2YiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtc3R5bGU9Iml0YWxpYyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+JmFtcDs8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjEyMyIgZmlsbD0iI2M5YWM2YiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iOSIgbGV0dGVyLXNwYWNpbmc9IjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI1LjAzLjIwMjc8L3RleHQ+Cjwvc3ZnPgo=" width="124" height="124" alt="Logo cưới Hải Nam và Phương Thúy">
+      <img class="hero__logo" src="picture/LOGO.svg" width="124" height="124" alt="Logo cưới Hải Nam và Phương Thúy">
       <p class="hero__date-top num">25 . 03 . 2027</p>
       <p class="hero__title">Lễ Thành hôn</p>
 
@@ -632,6 +644,7 @@ button:disabled{opacity:.6;cursor:wait}
 </div>
   </section>
 
+<section class="travel-map" id="nhung-noi-da-qua" aria-labelledby="travel-title"><div class="wrap"><div class="sec-head"><p class="travel-eyebrow">DẤU CHÂN CỦA HAI ĐỨA</p><h2 id="travel-title">Đi muôn nơi, có nhau là nhà</h2><p>Mỗi điểm đến là một kỷ niệm. Mỗi hành trình, chúng mình lại gần nhau hơn.</p></div><div class="travel-map__layout"><div class="travel-map__canvas"><svg viewBox="0 0 800 690" role="img" aria-label="Bản đồ Đông Nam Á với chín điểm đến của chúng mình"><image href="picture/journey-southeast-asia.svg" width="800" height="690"/><g class="travel-stop" style="--delay:0.0s"><title>1. Pattaya</title><path d="M172.1,287.3 L145,327"/><circle cx="172.1" cy="287.3" r="3"/><circle cx="145" cy="327" r="14"/><text x="145" y="332">1</text></g><g class="travel-stop" style="--delay:0.5s"><title>2. Băng Cốc</title><path d="M166.0,273.8 L110,284"/><circle cx="166.0" cy="273.8" r="3"/><circle cx="110" cy="284" r="14"/><text x="110" y="289">2</text></g><g class="travel-stop" style="--delay:1.0s"><title>3. Tam Đảo</title><path d="M248.2,150.8 L153,102"/><circle cx="248.2" cy="150.8" r="3"/><circle cx="153" cy="102" r="14"/><text x="153" y="107">3</text></g><g class="travel-stop" style="--delay:1.5s"><title>4. Ninh Bình</title><path d="M253.5,170.0 L178,216"/><circle cx="253.5" cy="170.0" r="3"/><circle cx="178" cy="216" r="14"/><text x="178" y="221">4</text></g><g class="travel-stop" style="--delay:2.0s"><title>5. Đà Nẵng</title><path d="M289.2,237.2 L347,268"/><circle cx="289.2" cy="237.2" r="3"/><circle cx="347" cy="268" r="14"/><text x="347" y="273">5</text></g><g class="travel-stop" style="--delay:2.5s"><title>6. Quy Nhơn</title><path d="M305.5,273.5 L368,327"/><circle cx="305.5" cy="273.5" r="3"/><circle cx="368" cy="327" r="14"/><text x="368" y="332">6</text></g><g class="travel-stop" style="--delay:3.0s"><title>7. Huế</title><path d="M279.4,230.6 L355,222"/><circle cx="279.4" cy="230.6" r="3"/><circle cx="355" cy="222" r="14"/><text x="355" y="227">7</text></g><g class="travel-stop" style="--delay:3.5s"><title>8. Hạ Long</title><path d="M270.6,158.8 L340,122"/><circle cx="270.6" cy="158.8" r="3"/><circle cx="340" cy="122" r="14"/><text x="340" y="127">8</text></g><g class="travel-stop" style="--delay:4.0s"><title>9. Hà Nội</title><path d="M251.6,157.5 L269,74"/><circle cx="251.6" cy="157.5" r="3"/><circle cx="269" cy="74" r="14"/><text x="269" y="79">9</text></g><text class="travel-sea" x="470" y="320">BIỂN ĐÔNG</text></svg><span class="travel-map__caption">Những miền thương nhớ · Đông Nam Á</span></div><ol class="travel-map__places"><li class="travel-stop" style="--delay:0.0s"><span>01</span><div><strong>Pattaya</strong><small>Thái Lan</small></div></li><li class="travel-stop" style="--delay:0.5s"><span>02</span><div><strong>Băng Cốc</strong><small>Thái Lan</small></div></li><li class="travel-stop" style="--delay:1.0s"><span>03</span><div><strong>Tam Đảo</strong><small>Việt Nam</small></div></li><li class="travel-stop" style="--delay:1.5s"><span>04</span><div><strong>Ninh Bình</strong><small>Việt Nam</small></div></li><li class="travel-stop" style="--delay:2.0s"><span>05</span><div><strong>Đà Nẵng</strong><small>Việt Nam</small></div></li><li class="travel-stop" style="--delay:2.5s"><span>06</span><div><strong>Quy Nhơn</strong><small>Việt Nam</small></div></li><li class="travel-stop" style="--delay:3.0s"><span>07</span><div><strong>Huế</strong><small>Việt Nam</small></div></li><li class="travel-stop" style="--delay:3.5s"><span>08</span><div><strong>Hạ Long</strong><small>Việt Nam</small></div></li><li class="travel-stop" style="--delay:4.0s"><span>09</span><div><strong>Hà Nội</strong><small>Việt Nam</small></div></li></ol></div></div></section>
   <!-- ================= CHƯƠNG TRÌNH ================= -->
   <section class="program" id="chuong-trinh" aria-labelledby="prog-h">
     <div class="wrap">
@@ -1294,7 +1307,7 @@ if(openButton)openButton.addEventListener('click',startMusic,{once:true});
   reduced.addEventListener('change',function(){cancelAnimationFrame(frame);moving=false;root.style.scrollSnapType='';root.style.scrollBehavior='';});
 })();
 </script>
-<link rel="stylesheet" href="wedding-enhancements.css?v=20260918-red1">
-<script src="wedding-enhancements.js?v=20260918-red1"></script>
+<link rel="stylesheet" href="wedding-enhancements.css?v=20260920-journey2">
+<script src="wedding-enhancements.js?v=20260920-journey2"></script>
 </body>
 </html>

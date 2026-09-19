@@ -1,5 +1,12 @@
 (() => {
   'use strict';
+  const travelMap = document.querySelector('.travel-map');
+  if (travelMap && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    travelMap.classList.add('is-animated');
+    new IntersectionObserver(entries => {
+      entries.forEach(entry => travelMap.classList.toggle('is-visible', entry.isIntersecting));
+    }, {threshold: 0.15}).observe(travelMap);
+  }
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   // Reuse the real RSVP form so validation, saved input and submission stay in sync.
   const rsvpForm = document.getElementById('rsvpForm');
@@ -13,7 +20,7 @@
   invitationAlert.innerHTML = `
     <button class="invitation-alert__close" type="button" aria-label="Đóng lời mời xác nhận">×</button>
     <header class="invitation-alert__heading">
-      <span class="invitation-alert__heart" aria-hidden="true">♡</span>
+      <img class="invitation-alert__logo" src="picture/LOGO.svg" width="72" height="72" alt="">
       <p>HẢI NAM &amp; PHƯƠNG THÚY</p>
       <h2 id="invitation-alert-title">Hẹn bạn ngày chung vui</h2>
       <p id="invitation-alert-description">Bạn sẽ đến chung vui cùng chúng mình chứ?<br>Để lại lời hồi đáp để chúng mình đón tiếp bạn chu đáo nhé.</p>

@@ -411,17 +411,17 @@ body.rsvp-alert-open{overflow:hidden}
 
 /* Crimson invitation: curved paper, embroidered lotus and a clickable round seal. */
 :root{--ink:#990a09;--peacock:#ae2926;--stone:#806965;--line:rgba(105,20,19,.16)}
-.curtain{--ornament:min(56vw,280px,32svh);overflow:hidden;background:transparent;opacity:1;transition:opacity 1.15s ease-in-out}
+.curtain{--flap-overlap:clamp(18px,5vw,32px);--ornament:min(56vw,280px,32svh);overflow:hidden;background:transparent;opacity:1;transition:opacity 1.15s ease-in-out}
 .curtain__bg{background:radial-gradient(ellipse at center,#990a09,#4b0909)}
 .curtain__paper{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100%;height:100%;isolation:isolate}
 .curtain__half{background:#990a09 url("picture/FINAL%20vector%20pattern.svg") center/clamp(420px,55vw,760px) auto repeat;border:0;overflow:visible}
 .curtain__half::before,.curtain__half::after{display:none}
-.curtain__half--l{width:60%;left:0;box-shadow:none;background-position:left center;filter:brightness(.85)}
-.curtain__half--r{width:56%;right:0;border-radius:46% 0 0 46% /18% 0 0 18%;background-position:right center;box-shadow:-9px 0 20px #48040466}
-.curtain__botanical{position:absolute;left:0;top:50%;width:var(--ornament);height:0;pointer-events:none;transition:opacity .85s ease-out}
+.curtain__half--l{width:100%;left:0;box-shadow:none;background-position:left center;filter:brightness(.85)}
+.curtain__half--r{width:calc(50% + var(--flap-overlap));right:0;border-radius:46% 0 0 46% /18% 0 0 18%;background-position:right center;box-shadow:-12px 0 24px #35000099,-3px 0 6px #35000066}
+.curtain__botanical{position:absolute;left:var(--flap-overlap);top:50%;width:var(--ornament);height:0;pointer-events:none;transition:opacity .85s ease-out}
 .curtain__leaf{position:absolute;width:76%;height:auto;left:-61%;bottom:-8px;transform:rotate(-13deg)}
 .curtain__lotus{position:absolute;width:65%;height:auto;left:-24%;bottom:0px;transform:rotate(12deg)}
-.curtain__half--r #openBtn{position:absolute;left:0;top:50%;transform:translate(-50%,-50%);width:calc(var(--ornament) * .78);height:auto;aspect-ratio:1;min-width:0;padding:0;margin:0;border:0;border-radius:50%;background:#990a09;pointer-events:auto;cursor:pointer;box-shadow:0 5px 14px #4d00004d;filter:none;animation:none;transition:opacity .85s ease-out,box-shadow .25s}
+.curtain__half--r #openBtn{position:absolute;left:var(--flap-overlap);top:50%;transform:translate(-50%,-50%);width:calc(var(--ornament) * .78);height:auto;aspect-ratio:1;min-width:0;padding:0;margin:0;border:0;border-radius:50%;background:#990a09;pointer-events:auto;cursor:pointer;box-shadow:0 5px 14px #4d00004d;filter:none;animation:none;transition:opacity .85s ease-out,box-shadow .25s}
 #openBtn img{display:block;width:100%;height:100%;object-fit:contain;border-radius:50%}
 .curtain__half--r #openBtn::after{inset:-4px;box-shadow:0 0 18px #edc88b40}
 .curtain__half--r #openBtn:hover{background:#990a09;box-shadow:0 6px 20px #4d000059,0 0 24px #f4ce9440}
@@ -430,7 +430,7 @@ body.rsvp-alert-open{overflow:hidden}
 .curtain.is-open .curtain__half--l{translate:-130% 0}
 .curtain.is-open .curtain__half--r{translate:150% 0}
 .curtain.is-open{opacity:0;pointer-events:none}
-@media(min-width:601px){.curtain__half--l{width:55%}.curtain__half--r{width:calc(50% + 30px);border-radius:100px 0 0 100px /18% 0 0 18%}}
+@media(min-width:601px){.curtain__half--l{width:100%}.curtain__half--r{width:calc(50% + var(--flap-overlap));border-radius:100px 0 0 100px /18% 0 0 18%}}
 @media(prefers-reduced-motion:reduce){.curtain,.curtain__half,.curtain__botanical,.curtain__half--r #openBtn{transition:none}}
 
 /* Mirrored lotus embroidery and a gentle invitation cue. */

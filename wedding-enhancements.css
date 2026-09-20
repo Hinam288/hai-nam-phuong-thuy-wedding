@@ -489,7 +489,7 @@ body.rsvp-alert-open{overflow:hidden}
 /* Photo memories, botanical framing and compact RSVP. */
 .intro__seal{width:72px;height:72px;padding:0;border:0}.intro__seal img{width:100%;height:100%;border-radius:50%}
 .travel-map__canvas{background:linear-gradient(145deg,#d4eee5,#f9eed8 60%,#d0e8e8)}
-.travel-label{cursor:pointer;outline:none}.travel-label:hover rect,.travel-label:focus-visible rect{fill:#bf3020;stroke:#fff1b4;stroke-width:2}
+.travel-label{cursor:pointer;outline:none}.travel-label:hover rect,.travel-label:focus-visible rect{fill:#990a09;stroke:#ffe599;stroke-width:1.5;filter:drop-shadow(0 0 4px #ffd47dbb)}
 .travel-thumb{clip-path:inset(0 round 4px);pointer-events:none}
 .travel-label text{font-size:10px}.travel-islands{fill:#ab7228;stroke:#fff5d7;stroke-width:.6}.travel-islands text{font:8px var(--body);stroke:none;fill:#805626}
 .memory-dialog{width:min(640px,calc(100vw - 32px));padding:0;border:1px solid #e8cd98;border-radius:24px;background:#fff8ed;color:#760d0b;max-height:88dvh;overflow:auto;box-shadow:0 24px 90px #30090966}
@@ -505,8 +505,8 @@ body:has(.memory-dialog[open]){overflow:hidden}
 #xac-nhan .rsvp__box{padding:18px 24px;gap:12px}#xac-nhan .rsvp__aside{padding-bottom:10px}#xac-nhan .fieldset{margin:0 0 8px}#xac-nhan .field{margin-bottom:8px}#xac-nhan .legend{padding-bottom:6px}#xac-nhan .field textarea{min-height:52px;height:52px}
 .rsvp .rsvp__foot{justify-content:center;text-align:center;gap:6px}.rsvp__foot .rsvp__hint{flex-basis:100%}.rsvp .rsvp__foot .btn{border-radius:999px;min-width:180px}
 .foot__thanks{font-family:'Cormorant Garamond',var(--display);font-weight:300;font-size:clamp(25px,3vw,40px);line-height:1.5}.foot__thanks em{font-weight:300}
-.curtain__half{background-color:#7a0808;background-blend-mode:multiply}
-.curtain-pattern-glow{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background-image:url("picture/pattern-highlight.svg");background-color:transparent;background-size:inherit;background-position:inherit;background-repeat:repeat;filter:drop-shadow(0 0 3px #f5d78e66);opacity:0;mask-image:radial-gradient(circle 180px at var(--light-x,50%) var(--light-y,50%),#000,transparent);-webkit-mask-image:radial-gradient(circle 180px at var(--light-x,50%) var(--light-y,50%),#000,transparent);transition:opacity .3s}
+.curtain__half{background-color:#b91a18;background-blend-mode:multiply}
+.curtain-pattern-glow{position:absolute;inset:0;border-radius:inherit;pointer-events:none;background-image:url("picture/pattern-highlight.svg");background-color:transparent;background-size:inherit;background-position:inherit;background-repeat:repeat;filter:drop-shadow(0 0 3px #f5d78e66);opacity:0;mask-image:radial-gradient(circle 90px at var(--light-x,50%) var(--light-y,50%),#000,transparent);-webkit-mask-image:radial-gradient(circle 90px at var(--light-x,50%) var(--light-y,50%),#000,transparent);transition:opacity .3s}
 @media(hover:hover){.curtain__half:hover > .curtain-pattern-glow{opacity:1}}
 @media(max-width:540px){#main > #xac-nhan{padding:18px 0 100px}#xac-nhan .rsvp__box{padding:14px}#xac-nhan .sec-head h2{font-size:27px}#xac-nhan .rsvp__aside p{font-size:12px}#xac-nhan .rsvp__aside .deadline{font-size:15px;margin-top:0}.memory-copy{padding:20px}.venue-vine{width:25%}}
 
@@ -516,7 +516,14 @@ body:has(.memory-dialog[open]){overflow:hidden}
 
 .map.map--heart .venue-vine{width:28%;height:100%;left:-4%;right:auto;top:0}.map.map--heart .venue-vine--right{left:auto;right:-4%}.venue-vine > path{fill:none}
 
-.travel-label{transform-box:fill-box;transform-origin:center;scale:1;transition:scale .22s ease,filter .22s ease}
-@media(hover:hover){.travel-label:hover{scale:1.06;filter:drop-shadow(0 0 4px #ffd47dbb)}}
-.travel-label:focus-visible{scale:1.06;filter:drop-shadow(0 0 4px #ffd47dbb)}
+.travel-label{transform-box:fill-box;transform-origin:center;scale:1;transition:filter .22s ease}
+
+
 @media(prefers-reduced-motion:reduce){.travel-label{transition:none}}
+
+#main > .travel-map{justify-content:flex-start;padding-top:30px}
+.lotus-crystals{position:absolute;left:calc(var(--ornament) * .09);bottom:calc(var(--ornament) * .62);width:0;height:0;pointer-events:none}
+.lotus-crystals i{position:absolute;width:var(--size);height:calc(var(--size) * 1.5);background:linear-gradient(135deg,#fffdf5,#ffe3a7 45%,#f3abbc 70%,#fff);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);filter:drop-shadow(0 0 4px #ffe5a8);opacity:0;animation:lotus-crystal-float var(--duration) ease-in-out var(--delay) infinite}
+@keyframes lotus-crystal-float{0%{opacity:0;transform:translate(-50%,0) rotate(0deg) scale(.3)}20%{opacity:.85}48%{opacity:.35}65%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(110deg) scale(.65)}}
+.curtain.is-open .lotus-crystals i{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.lotus-crystals i{animation:none;opacity:.65;transform:translate(var(--dx),var(--dy)) scale(.6)}}

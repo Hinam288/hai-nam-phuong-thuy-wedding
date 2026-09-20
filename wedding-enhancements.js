@@ -35,6 +35,17 @@
   memoryDialog.addEventListener('close', () => memoryTrigger?.focus({preventScroll:true}));
   ['wheel','touchstart','touchmove','touchend'].forEach(type => memoryDialog.addEventListener(type, event => event.stopPropagation(), {passive:true}));
   const cover = document.querySelector('.curtain');
+  cover.querySelectorAll('.curtain__botanical').forEach(flower => {
+    const crystals = document.createElement('span');
+    crystals.className = 'lotus-crystals';
+    crystals.setAttribute('aria-hidden', 'true');
+    for (let i = 0; i < 9; i++) {
+      const crystal = document.createElement('i');
+      crystal.style.cssText = `--size:${4+i%3*2}px;--dx:${(i%2?-1:1)*(18+i*6)}px;--dy:${-28-i*8}px;--duration:${3.5+i%4*.6}s;--delay:${-i*.55}s`;
+      crystals.append(crystal);
+    }
+    flower.append(crystals);
+  });
   cover.querySelectorAll('.curtain__half').forEach(panel => {
     const glow = document.createElement('span'); glow.className='curtain-pattern-glow'; glow.setAttribute('aria-hidden','true'); panel.prepend(glow);
     panel.addEventListener('pointermove', event => {const rect=panel.getBoundingClientRect();panel.style.setProperty('--light-x',`${event.clientX-rect.left}px`);panel.style.setProperty('--light-y',`${event.clientY-rect.top}px`);});

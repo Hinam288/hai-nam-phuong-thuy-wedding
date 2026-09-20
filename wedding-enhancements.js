@@ -7,6 +7,38 @@
       entries.forEach(entry => travelMap.classList.toggle('is-visible', entry.isIntersecting));
     }, {threshold: 0.15}).observe(travelMap);
   }
+  const memoryDialog = document.createElement('dialog');
+  memoryDialog.className = 'memory-dialog';
+  memoryDialog.setAttribute('aria-labelledby', 'memory-title');
+  memoryDialog.innerHTML = `<button class="memory-close" type="button" aria-label="Đóng kỷ niệm">×</button><img class="memory-photo" alt=""><div class="memory-copy"><p class="memory-sample">Ảnh mẫu · Chờ ảnh chuyến đi của chúng mình</p><h2 id="memory-title"></h2><p class="memory-note"></p></div>`;
+  document.body.append(memoryDialog);
+  let memoryTrigger;
+  function openMemory(trigger) {
+    const item = window.travelMemories?.[Number(trigger.dataset.memory)];
+    if (!item) return;
+    memoryTrigger = trigger;
+    memoryDialog.querySelector('img').src = item.image;
+    memoryDialog.querySelector('img').alt = `Kỷ niệm tại ${item.name}`;
+    memoryDialog.querySelector('h2').textContent = item.name;
+    memoryDialog.querySelector('.memory-note').textContent = item.note;
+    memoryDialog.querySelector('.memory-sample').hidden = !item.sample;
+    memoryDialog.showModal();
+  }
+  document.querySelectorAll('[data-memory]').forEach(trigger => {
+    trigger.addEventListener('click', () => openMemory(trigger));
+    trigger.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {event.preventDefault(); openMemory(trigger);}
+    });
+  });
+  memoryDialog.querySelector('button').addEventListener('click', () => memoryDialog.close());
+  memoryDialog.addEventListener('click', event => {if (event.target === memoryDialog) {const r=memoryDialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)memoryDialog.close();}});
+  memoryDialog.addEventListener('close', () => memoryTrigger?.focus({preventScroll:true}));
+  ['wheel','touchstart','touchmove','touchend'].forEach(type => memoryDialog.addEventListener(type, event => event.stopPropagation(), {passive:true}));
+  const cover = document.querySelector('.curtain');
+  cover.querySelectorAll('.curtain__half').forEach(panel => {
+    const glow = document.createElement('span'); glow.className='curtain-pattern-glow'; glow.setAttribute('aria-hidden','true'); panel.prepend(glow);
+    panel.addEventListener('pointermove', event => {const rect=panel.getBoundingClientRect();panel.style.setProperty('--light-x',`${event.clientX-rect.left}px`);panel.style.setProperty('--light-y',`${event.clientY-rect.top}px`);});
+  });
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   // Reuse the real RSVP form so validation, saved input and submission stay in sync.
   const rsvpForm = document.getElementById('rsvpForm');
